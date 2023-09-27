@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira *NOME_EMPRESA*</title>
+</head>
+<body>
+    --Selecionar a raça da abelha que você cria<br>
+    <select  id="inpRacaAbelha">
+        <option value="Abelha real">Abelha real</option>
+        <option value="Abelha italiana">Abelha italiana</option>
+        <option value="Abelha da russia">Abelha da russia</option>
+        <option value="Abelha africana">Abelha africana</option>
+        <option value="Abelha carnica">Abelha carnica</option>
+    </select><br>
+
+    --Insira aqui seu numero de colmeias:<br>
+    <input type="number" id="inpQntColmeia"><br>
+
+    <button onclick="calcularColmeias()"><b>Confira agora</b></button>
+    <div id="divExibicao"></div>
+
+</body>
+</html>
+<script>
+    function calcularColmeias(){
+    var qntColmeia = Number(inpQntColmeia.value);
+    var qntAbelha
+    
+    if (racaAbelha = "Abelha Real"){
+        qntAbelha = qntColmeia * 3000;
+    }else if (racaAbelha = "Abelha italiana"){
+        qntAbelha = qntColmeia * 4000;  
+    }else if (racaAbelha = "Abelha da russia"){
+        qntAbelha = qntColmeia * 5000;  
+    }else if (racaAbelha = "Abelha africana"){
+        qntAbelha =qntColmeia *  200; 
+    }else if (racaAbelha = "Abelha carnica"){
+        qntAbelha = qntColmeia * 5000;  
+    }
+
+    qntAbelha *= 0.115;
+    qntAbelha *= 30;
+
+    divExibicao.innerHTML = `Por falta de cuidado com o calor e a humidade<br> você perde <b style="color:red;">${qntAbelha}</b> abelhas por mês,<br> que não chegam a nascer por problemas de fertilidade mas para resolver este problema.<br> <b>Conte conosco.</b>`
+}
+</script>
