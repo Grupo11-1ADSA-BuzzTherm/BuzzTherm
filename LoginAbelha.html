@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="cssLogin.css">
+    <title>Document</title>
+</head>
+
+<body> 
+    <header>
+
+
+        <h3>
+            Página inicial
+        </h3>
+    </header>
+    <main>
+        <div class="campos">
+            <h1 class="Titulo">
+                Login
+            </h1>
+            <h4 class="EntreContinuar">
+                Entre para continuar
+            </h4>
+            <li class="EntrarLogin">
+            
+                Email:
+                <input type="text" id="input_entrar">
+            </li>
+            
+            <li class="SenhaLogin">
+                Senha:
+                <input type="password" id="input_senha">
+            </li>
+
+            <li class="ConfirmarSenha">
+                Confirmar senha:
+                <input type="password" id="input_confirmarsenha">
+            </li>
+
+            <button class="botao" onclick="botaoo()">
+
+                Entrar </button>
+
+            <div class="EsqueceuSenha">
+                <a href="/home/anthonybueno/Desktop/sprint2/EsqueceuSenha.html" >
+                    <span> Esqueceu a senha?</span>
+                </div>
+            </li>
+        </div>
+    <figure>
+        <div class="imagem">
+            <img src="../sprint2/assets/img/ablha.png" width="400px" height="250px" alt="">
+        </div>
+    </figure>
+        
+    </main>
+
+
+    <footer>
+        <div>
+            v1.0.0
+        </div>
+    </footer>
+
+
+    <script>
+        function botaoo() {
+            var entrar = input_entrar.value
+            var senha = input_senha.value
+            var confirmar = input_confirmarsenha.value
+        
+            if  (entrar.endsWith('sptech.school'))  {
+                if (senha == 12345 && confirmar == 12345) {
+                    alert(`Acesso permitido`)
+                }
+            }
+            else {
+                alert(`Acesso negado`)
+            }
+
+
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>

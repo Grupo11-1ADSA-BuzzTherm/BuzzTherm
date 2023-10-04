@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=-, initial-scale=1.0">
+    <link rel="stylesheet" href="EsqueciAsenha.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <main>
+        <div class="container
+        ">
+        <h1 class="Titulo">
+        Problemas para entrar?
+        </h1>
+        <img src="../sprint2/assets/img/cadeado-removebg-preview.png" width="150px" height="150px" alt="">
+        <div class="recuperaçao">
+        Insira o seu email, telefone ou usuario para recuperação <br> e enviaremos um código de recuperação
+        <input  id="input_recuperaçao"> </div>
+
+    <button class="botao" onclick="Enviaremail()">
+    Enviar Email</button>
+        <span> 
+            OU
+        </span>
+    <h2 >
+        Criar conta
+    </h2>
+    <div class="VoltarLogin">
+        <a href="/home/anthonybueno/Desktop/sprint2/LoginAbelha.html">
+            Voltar ao login
+        </a>
+    </div>
+    
+</div>
+</main>
+</body>
+</html>
+<script> 
+    function Enviaremail() {
+        var recuperaçao= input_recuperaçao.value
+        if(recuperaçao.endsWith('sptech.school') || recuperaçao==123456789 || recuperaçao=='Moises2005'){
+            alert(`Código enviado com sucesso!`)
+        }
+        else {
+            alert(`Insira os dados corretos`)
+        }
+    }
+</script>
