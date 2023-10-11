@@ -1,0 +1,35 @@
+.sobre {
+    /* background-color: rgb(202, 202, 202); */
+    background-image: linear-gradient( to right, rgb(27, 26, 26), rgb(236, 209, 88), rgb(73, 67, 33)); 
+    padding: 40px 4%;
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    height: 750px;
+    justify-content: center;
+}
+
+/* .sobre .txt_um h3{
+    margin: 50px;
+    color: #ffd145;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: underline;
+} */
+
+.sobre img{
+    width: 500px;
+    height: 500px;
+}
+
+.txt_sobre p{
+    font-size: 17px;
+    margin: 20px 0;
+    width: 700px;
+   border-right: 40px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.txt_sobre h1{
+    margin-bottom: 30px;
+}

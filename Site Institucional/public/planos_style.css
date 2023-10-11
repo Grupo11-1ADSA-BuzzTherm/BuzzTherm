@@ -1,0 +1,43 @@
+.planos{
+    /* background-color: #ffffff; */
+    background-image: linear-gradient( to bottom, rgb(255, 255, 255), rgb(224, 224, 224), rgb(219, 219, 219)); 
+}
+
+.interface{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.flex{
+    display: flex;
+}
+
+
+div .planos{
+    padding: 40px 4%;
+}
+
+div .planos .flex{
+    gap: 60px;
+}
+
+div .interface .titulo{
+    text-align: center;
+    font-size: 40px;
+    border-top: 50px;
+    border-bottom: 20px;
+}
+
+.planos .planos-box{
+    padding: 40px;
+    border-radius: 30px;
+    margin-top: 50px;
+}
+
+.planos .planos-box:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 8px #000000;}
+
+.planos .planos-box h3{
+    font-size: 28px;
+    margin: 15px 0;
+}
