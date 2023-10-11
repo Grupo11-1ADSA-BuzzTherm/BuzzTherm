@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Financeira *NOME_EMPRESA*</title>
+    <title>Calculadora Financeira BuzzTherm</title>
 </head>
 <body>
     --Selecionar a raça da abelha que você cria<br>
@@ -26,17 +26,20 @@
 <script>
     function calcularColmeias(){
     var qntColmeia = Number(inpQntColmeia.value);
-    var qntAbelha
+    var qntAbelha;
+
+    // 40.000 abelhas por colmeia
+    // abelha produz 5g por ano de mel
     
-    if (racaAbelha = "Abelha Real"){
+    if (racaAbelha = "Abelha Real") {
         qntAbelha = qntColmeia * 3000;
-    }else if (racaAbelha = "Abelha italiana"){
+    } else if (racaAbelha = "Abelha italiana") {
         qntAbelha = qntColmeia * 4000;  
-    }else if (racaAbelha = "Abelha da russia"){
+    } else if (racaAbelha = "Abelha da russia") {
         qntAbelha = qntColmeia * 5000;  
-    }else if (racaAbelha = "Abelha africana"){
+    } else if (racaAbelha = "Abelha africana") {
         qntAbelha =qntColmeia *  200; 
-    }else if (racaAbelha = "Abelha carnica"){
+    } else if (racaAbelha = "Abelha carnica") {
         qntAbelha = qntColmeia * 5000;  
     }
 

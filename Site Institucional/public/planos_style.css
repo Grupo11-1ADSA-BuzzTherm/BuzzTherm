@@ -35,9 +35,19 @@ div .interface .titulo{
 
 .planos .planos-box:hover{
     transform: scale(1.05);
-    box-shadow: 0 0 8px #000000;}
+    box-shadow: 0 0 8px #000000;
+    margin-bottom: 10px;
+}
 
 .planos .planos-box h3{
     font-size: 28px;
     margin: 15px 0;
+}
+
+.planos-box img {
+    border-radius: 20px;
+}
+
+.planos {
+    padding: 50px;
 }
