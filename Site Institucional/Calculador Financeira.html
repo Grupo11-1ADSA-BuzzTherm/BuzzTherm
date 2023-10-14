@@ -6,46 +6,50 @@
     <title>Calculadora Financeira BuzzTherm</title>
 </head>
 <body>
-    --Selecionar a raça da abelha que você cria<br>
+    
+    <!-- --Selecionar a raça da abelha que você cria<br>
     <select  id="inpRacaAbelha">
         <option value="Abelha real">Abelha real</option>
         <option value="Abelha italiana">Abelha italiana</option>
         <option value="Abelha da russia">Abelha da russia</option>
         <option value="Abelha africana">Abelha africana</option>
         <option value="Abelha carnica">Abelha carnica</option>
-    </select><br>
-
+    </select><br> -->
+    
+    --Quantos quadros por colmeia você mantem:<br>
+    <input type="text" id="inpQntQuadro"><br>
+    
     --Insira aqui seu numero de colmeias:<br>
     <input type="number" id="inpQntColmeia"><br>
 
     <button onclick="calcularColmeias()"><b>Confira agora</b></button>
     <div id="divExibicao"></div>
-
+    
 </body>
 </html>
 <script>
-    function calcularColmeias(){
-    var qntColmeia = Number(inpQntColmeia.value);
-    var qntAbelha;
+    function calcularColmeias() {
+        
+        // Inicialização variáveis
+        var qntColmeia = Number(inpQntColmeia.value);
+        var qntQuadroColmeia = Number(inpQntQuadro.value);
+        var qntAbelhaColmeia = 0
+        var qntPerdaAbelhaTotal = 0;
+        var qntAbelhaTotal = 0;
+        var perdaLitroMelMes = 0;
+        var perdaMonetariaMes = 0;
+        var abelhaQuadro = 6000;
 
-    // 40.000 abelhas por colmeia
-    // abelha produz 5g por ano de mel
-    
-    if (racaAbelha = "Abelha Real") {
-        qntAbelha = qntColmeia * 3000;
-    } else if (racaAbelha = "Abelha italiana") {
-        qntAbelha = qntColmeia * 4000;  
-    } else if (racaAbelha = "Abelha da russia") {
-        qntAbelha = qntColmeia * 5000;  
-    } else if (racaAbelha = "Abelha africana") {
-        qntAbelha =qntColmeia *  200; 
-    } else if (racaAbelha = "Abelha carnica") {
-        qntAbelha = qntColmeia * 5000;  
+        var precoMedioMelKgDolar = 4;
+        var cotacaoDolarReal = 5.08;
+        
+        qntAbelhaColmeia = qntQuadroColmeia * abelhaQuadro;
+        qntAbelhaTotal = qntAbelhaColmeia * qntColmeia;
+        qntPerdaAbelhaTotal = qntAbelhaTotal * 0.12;
+        perdaLitroMelMes = (qntPerdaAbelhaTotal * 0.0036)/12;
+        perdaMonetariaMes = (perdaLitroMelMes * 1.4) * (precoMedioMelKgDolar * cotacaoDolarReal);
+
+
+        divExibicao.innerHTML = `<br>Por falta de cuidado com o calor e a humidade, você perde <b style="color:red;">${qntPerdaAbelhaTotal}</b> abelhas por mês, que não chegam a nascer por problemas de fertilidade.<br> Assim te dando um prejuizo de R$ <b style="color:red;"> ${perdaMonetariaMes} </b>. Para resolver este problema, <b>conte conosco.</b><br><br><button><b>Clique aqui e cadastre sua empresa!</b></button>`
     }
-
-    qntAbelha *= 0.115;
-    qntAbelha *= 30;
-
-    divExibicao.innerHTML = `Por falta de cuidado com o calor e a humidade<br> você perde <b style="color:red;">${qntAbelha}</b> abelhas por mês,<br> que não chegam a nascer por problemas de fertilidade mas para resolver este problema.<br> <b>Conte conosco.</b>`
-}
 </script>
