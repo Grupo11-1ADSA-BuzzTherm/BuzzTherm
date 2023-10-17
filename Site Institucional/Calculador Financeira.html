@@ -17,10 +17,13 @@
     </select><br> -->
     
     --Quantos quadros por colmeia você mantem:<br>
-    <input type="text" id="inpQntQuadro"><br>
+    <input type="number" id="inpQntQuadro"><br>
     
     --Insira aqui seu numero de colmeias:<br>
     <input type="number" id="inpQntColmeia"><br>
+    
+    --Insira é sua média de perda mensal de mel(kg):<br>
+    <input type="number" id="iptPerdaMensalMel"><br>
 
     <button onclick="calcularColmeias()"><b>Confira agora</b></button>
     <div id="divExibicao"></div>
@@ -33,23 +36,24 @@
         // Inicialização variáveis
         var qntColmeia = Number(inpQntColmeia.value);
         var qntQuadroColmeia = Number(inpQntQuadro.value);
-        var qntAbelhaColmeia = 0
+        var perdaMensalMel = Number(iptPerdaMensalMel.value);
+        var qntAbelhaColmeia = 0;
         var qntPerdaAbelhaTotal = 0;
         var qntAbelhaTotal = 0;
         var perdaLitroMelMes = 0;
         var perdaMonetariaMes = 0;
+        
         var abelhaQuadro = 6000;
-
         var precoMedioMelKgDolar = 4;
         var cotacaoDolarReal = 5.08;
         
         qntAbelhaColmeia = qntQuadroColmeia * abelhaQuadro;
         qntAbelhaTotal = qntAbelhaColmeia * qntColmeia;
         qntPerdaAbelhaTotal = qntAbelhaTotal * 0.12;
-        perdaLitroMelMes = (qntPerdaAbelhaTotal * 0.0036)/12;
-        perdaMonetariaMes = (perdaLitroMelMes * 1.4) * (precoMedioMelKgDolar * cotacaoDolarReal);
+        // perdaLitroMelMes = (qntPerdaAbelhaTotal * 0.0036)/12;
+        perdaMonetariaMes = perdaMensalMel * (precoMedioMelKgDolar * cotacaoDolarReal);
 
+        divExibicao.innerHTML = `<br>Por falta de cuidado com o calor e a umidade, você perde <b style="color:red;">${qntPerdaAbelhaTotal}</b> abelhas por mês, que não chegam a nascer por problemas de fertilidade.<br> Assim te dando um prejuizo de R$ <b style="color:red;"> ${perdaMonetariaMes} </b>.Para resolver este problema, <b>conte conosco.</b><br><br><button><b>Clique aqui e cadastre sua empresa!</b></button>`;
 
-        divExibicao.innerHTML = `<br>Por falta de cuidado com o calor e a humidade, você perde <b style="color:red;">${qntPerdaAbelhaTotal}</b> abelhas por mês, que não chegam a nascer por problemas de fertilidade.<br> Assim te dando um prejuizo de R$ <b style="color:red;"> ${perdaMonetariaMes} </b>. Para resolver este problema, <b>conte conosco.</b><br><br><button><b>Clique aqui e cadastre sua empresa!</b></button>`
     }
 </script>
