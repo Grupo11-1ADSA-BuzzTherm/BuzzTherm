@@ -1,13 +1,3 @@
-.sobre {
-    /* background-color: rgb(202, 202, 202); */
-    background-image: linear-gradient( to right, rgb(27, 26, 26), rgb(236, 209, 88), rgb(73, 67, 33)); 
-    padding: 40px 4%;
-    display: flex;
-    align-items: center;
-    gap: 70px;
-    height: 750px;
-    justify-content: center;
-}
 
 /* .sobre .txt_um h3{
     margin: 50px;
@@ -17,19 +7,77 @@
     text-decoration: underline;
 } */
 
-.sobre img{
+.sobre img {
     width: 500px;
     height: 500px;
 }
 
-.txt_sobre p{
+.txt_sobre p {
     font-size: 17px;
     margin: 20px 0;
     width: 700px;
-   border-right: 40px;
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-right: 40px;
 }
 
-.txt_sobre h1{
+.txt_sobre h1 {
     margin-bottom: 30px;
+}
+
+.sobre .sobre-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+    padding: 40px 4%;
+}
+
+.mvv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+}
+
+.mvv img {
+    width: 110px;
+    height: 110px;
+}
+
+.mvv .visao img {
+    width: 130px;
+    height: 130px;
+}
+
+.mvv-item div {
+    margin-top: 50px;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.missao div {
+    background-color: #1d1d1d;
+}
+
+.visao div {
+    background-color: #ecd158;
+}
+
+.valor div {
+    background-color: #1d1d1d;
+}
+
+.mvv-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mvv p {
+    width: 300px;
+    font-size: 15px;
+    text-align: center;
 }

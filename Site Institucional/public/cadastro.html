@@ -39,35 +39,52 @@
     <div class="corpo-login">
         <div class="container">
             <div class="campos">
-                <h2>Bem-vindo novamente!</h2>
+                <h2>Bem-vindo!</h2>
                 <h1 class="Titulo">
-                    Login
+                    Cadastre-se
                 </h1>
                 <div class="linha"></div>
                 <li class="item-campo">
-                    <span>Email:</span>
+                    <span>Nome:</span>
                     <input type="text" id="input_entrar">
                 </li>
 
                 <li class="item-campo">
+                    <span>Sobrenome:</span>
+                    <input type="password" id="">
+                </li>
+
+                <li class="item-campo">
+                    <span>CNPJ:</span>
+                    <input type="password" id="">
+                </li>
+
+                <li class="item-campo">
+                    <span>Email:</span>
+                    <input type="password" id="">
+                </li>
+
+                <li class="item-campo">
                     <span>Senha:</span>
-                    <input type="password" id="input_senha">
+                    <input onkeyup="validarSenha()" type="password" id="input_senha">
+                    <span id="validacao_senha"></span>
+                </li>
+
+                <li class="item-campo">
+                    <span>Confirmar Senha:</span>
+                    <input type="password" id="">
                 </li>
 
                 <div class="EsqueceuSenha">
-                    <a href="recuperar_senha.html">
-                        <span>Esqueceu a senha?</span>
-                </div>
-
-                <button class="botao" onclick="entrarConta()">
-
-                    Entrar </button>
-
-                <div class="item-cadastro">
-                    <a href="cadastro.html">
-                        <span>Não tem uma conta? <u>Cadastre-se</u></span>
+                    <a href="login.html">
+                        <span>Possui uma conta? <u>Faça login!</u></span>
                     </a>
                 </div>
+
+                <button class="botao" onclick="cadastrarCliente()">
+                    Entrar
+                </button>
+
                 </li>
             </div>
         </div>
@@ -76,7 +93,17 @@
 </html>
 
 <script>
-    function entrarConta() {
+    function cadastrarCliente() {
+
+    }
+
+    function validarSenha() {
+        var tamanho = input_senha.value.length;
         
+        if (tamanho < 8) {
+            validacao_senha.innerHTML = 'Senha fraca'
+        } else {
+            validacao_senha.innerHTML = 'Senha forte'
+        }
     }
 </script>
