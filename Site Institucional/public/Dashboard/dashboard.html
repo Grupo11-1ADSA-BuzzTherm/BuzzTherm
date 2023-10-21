@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style_dashboard.css">
+</head>
+<body>
+
+    <div class="dash-container">
+        <div class="dash-item graph-container">
+            <div class="card-container card1">
+                <div class="titulo">
+                    <h1>Ultimos registros</h1>
+                </div>
+               <canvas id="grafico_line"></canvas>
+            </div>
+            <div class="card-container card2">
+                <div class="titulo">
+                    <h1>Todos os registros</h1>
+                </div>
+                <canvas id="grafico_bar"></canvas>
+            </div>
+        </div>
+        <div class="dash-item message-container">
+            <div class="card-container card3">
+                <div class="titulo">
+                    <h1>Alertas</h1>
+                    <img class="lupa" src="https://cdn-icons-png.flaticon.com/512/57/57477.png" alt="">
+                </div>
+                <ul class="lista-registro">
+                    <li>
+                        <div class="li-flex">
+                            <div class="msg-alerta">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1538/1538491.png" alt="">
+                                <span class="texto-alerta">
+                                    <h3>Umidade</h3>
+                                    <p>Registrado 77%</p>
+                                </span>
+                            </div>
+                                <div class="datahora-alerta">
+                                    15:23<br>29/09
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="li-flex">
+                            <div class="msg-alerta">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1538/1538491.png" alt="">
+                                <span class="texto-alerta">
+                                    <h3>Temperatura</h3>
+                                    <p>Registrado 33ºC</p>
+                                </span>
+                            </div>
+                                <div class="datahora-alerta">
+                                    09:44<br>24/09
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="li-flex">
+                            <div class="msg-alerta">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1538/1538491.png" alt="">
+                                <span class="texto-alerta">
+                                    <h3>Umidade</h3>
+                                    <p>Registrado 94%</p>
+                                </span>
+                            </div>
+                                <div class="datahora-alerta">
+                                    03:07<br>18/09
+                            </div>
+                        </div>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+            <div class="card-container card4">
+                <div class="titulo">
+                    <h1>Minhas colmeias</h1>
+                    <img class="lupa" src="https://cdn-icons-png.flaticon.com/512/57/57477.png" alt="">
+                </div>
+                    <ul class="lista-registro">
+                        <li>
+                            <div class="li-flex lista-colmeia">
+                                <div class="msg-alerta">
+                                    <span class="texto-alerta">
+                                        <h3>Colmeia #29</h3>
+                                        <p><b class="situacao-inoperante">&bull;</b> Situação: Inoperante</p>
+                                    </span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <div class="li-flex lista-colmeia">
+                                <div class="msg-alerta">
+                                    <span class="texto-alerta">
+                                        <h3>Colmeia #1</h3>
+                                        <p><b class="situacao-normal">&bull;</b> Situação: Normal</p>
+                                    </span>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <div class="li-flex lista-colmeia">
+                                <div class="msg-alerta">
+                                    <span class="texto-alerta">
+                                        <h3>Colmeia #2</h3>
+                                        <p><b class="situacao-normal">&bull;</b> Situação: Normal</p>
+                                    </span>
+                            </div>
+                        </li>
+
+                        <p><b>Mostrar tudo ▾</b></p>
+                        
+                    </ul>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    const labelsLine = [
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
+    ];
+
+    const labelsBar = [
+        `Fevereiro`,
+        `Março`,
+        `Abril`,
+        `Maio`,
+        `Junho`,
+        `Julho`,
+        `Agosto`,
+        `Setembro`,
+        `Outubro`,
+    ];
+
+    const data = {
+
+        labels: labelsLine,
+
+            datasets: [{
+
+                label: `Temperatura`,
+                backgroundColor: `rgb(255,0,0)`,
+                borderColor: `rgb(255,0,0)`,
+                data: [32,30,30,29,28,28,30,31],
+            },
+            {
+                label: `Umidade`,
+                backgroundColor: `rgb(0, 0, 255)`,
+                borderColor: `rgb(0, 0, 255)`,
+                data: [78,80,79,82,77,79,80,82],
+            },
+        ]
+    }
+
+    const data2 = {
+
+            labels: labelsBar,
+
+            datasets: [{
+
+                label: `Temperatura`,
+                backgroundColor: `rgb(255,140,0)`,
+                borderColor: `rgb(255,140,0)`,
+                data: [28,29,28,26,25,22,27,30,33],
+            },
+            {
+                label: `Umidade`,
+                backgroundColor: `rgb(0, 0, 255)`,
+                borderColor: `rgb(0, 0, 255)`,
+                data: [80,75,73,77,90,69,68,80,91],
+            },
+
+        ]
+
+    }
+
+    const config1 = {
+        type: `line`,
+        data: data,
+        options:{
+            layout: {
+            padding: 20
+        }
+        }
+    }
+
+    const config2 = {
+        type: `bar`,
+        data: data2,
+        options:{
+            layout: {
+            padding: 20
+        }
+        }
+    }
+
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById(`grafico_line`),
+        config1
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById(`grafico_bar`),
+        config2
+    );
+
+</script>
