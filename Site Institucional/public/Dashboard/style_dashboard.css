@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+}
+
+body {
+    background-color: #f6f6f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.dash-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 80%;
+}
+
+.card-container {
+    background-color: white;
+    border-radius: 15px;
+    margin: 10px 0;
+    box-shadow: 4px 4px 14px -6px #000000;
+
+
+    /* z-index: -1; */
+    /* -webkit-box-shadow: 0px 0px 4px 2px #000000;
+    -moz-box-shadow: 0px 0px 4px 2px #000000; */
+
+}
+
+.graph-container {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.message-container {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card1 {
+    width: 85%;
+    height: 50%;
+}
+.card2 {
+    width: 85%;
+    height: 50%;
+}
+.card3 {
+    width: 85%;
+    height: 60%;
+}
+.card4 {
+    width: 85%;
+    height: 40%;
+}
+
+.titulo {
+    display: flex;
+    font-size: 0.8rem;
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.lista-registro {
+    list-style: none;
+}
+
+.li-flex {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.datahora-alerta {
+    font-size: 10px;
+    margin-right: 1rem;
+}
+
+.li-flex i {
+    font-size: 40px;
+    margin-right: 2rem;
+}
+
+.msg-alerta {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.texto-alerta h3 {
+    font-size: 20px;
+}
+
+.texto-alerta p {
+    font-size: 15px;
+}
+
+.lista-colmeia .msg-alerta {
+    width: 100%;
+}
+
+.card4 .titulo {
+    margin-bottom: 1rem;
+}
+
+.situacao-inoperante {
+    color: red;
+    font-size: 20px;
+}
+.situacao-normal {
+    color: green;
+    font-size: 20px;
+}
+
+img{
+    margin: 0 10px;
+    width: 30px;
+    height: 30px;
+}
+
+.lista-registro p{
+    font-size: 15px;
+    padding: 0.5px;
+    text-align: center;
+}
+
+.lupa{
+    width: 20px;
+    height: 20px;
+}
