@@ -143,6 +143,8 @@ body {
 }
 
 
+
+
 .social .container {
     justify-content: space-evenly;
 }
@@ -182,6 +184,22 @@ body {
     color: white;
     font-size: 25px;
 }
+
+.btn-botao {
+    background-color: #ffcc00; /* Amarelo */
+    color: #000; /* Preto */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .link-sem-sublinhado {
+    text-decoration: none; /* Remove o sublinhado */
+    color: #000;
+  }
 
 .sobre {
     /* background-color: rgb(202, 202, 202); */
@@ -254,9 +272,6 @@ textarea#mensagem {
 .button:hover {
     background-color: #f1d65d;
 }
-
-
-
 
 
 .footer {
