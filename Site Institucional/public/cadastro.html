@@ -51,39 +51,41 @@
 
                 <li class="item-campo">
                     <span>Sobrenome:</span>
-                    <input type="password" id="">
+                    <input type="text" id="">
                 </li>
 
                 <li class="item-campo">
                     <span>CNPJ:</span>
-                    <input type="password" id="">
+                    <input type="text" id="">
                 </li>
 
                 <li class="item-campo">
                     <span>Email:</span>
-                    <input type="password" id="">
+                    <input onkeyup="validarEmail()" type="text" id="input_email">
+                    <span id="validar_email" class="span-validacao"></span>
                 </li>
 
                 <li class="item-campo">
                     <span>Senha:</span>
-                    <input onkeyup="validarSenha()" type="password" id="input_senha">
-                    <span id="validacao_senha"></span>
+                    <input onkeyup="validarCampos()" type="password" id="input_senha">
+                    <span id="validar_senha" class="span-validacao"></span>
                 </li>
-
+                
                 <li class="item-campo">
                     <span>Confirmar Senha:</span>
-                    <input type="password" id="">
+                    <input onkeyup="validarCampos()" type="password" id="input_confirmar">
+                    <span id="confirmar_senha" class="span-validacao"></span>
                 </li>
+                
+                <button class="botao" onclick="cadastrarCliente()">
+                    Entrar
+                </button>
 
                 <div class="EsqueceuSenha">
                     <a href="login.html">
                         <span>Possui uma conta? <u>Faça login!</u></span>
                     </a>
                 </div>
-
-                <button class="botao" onclick="cadastrarCliente()">
-                    Entrar
-                </button>
 
                 </li>
             </div>
@@ -93,17 +95,69 @@
 </html>
 
 <script>
-    function cadastrarCliente() {
+    var cadastroValidado = false;
 
+    function cadastrarCliente() {
+        if (cadastroValidado == true) {
+            alert('Usuário cadastrado com sucesso!');
+        } else {
+            alert('Reveja suas informações.');
+        }
     }
 
-    function validarSenha() {
-        var tamanho = input_senha.value.length;
+    function validarCampos() {
+        var senha = input_senha.value
+        var tamanhoSenha = senha.length;
+            
+        if ((senha != senha.toLowerCase()) && (senha != senha.toUpperCase()) && tamanhoSenha >= 8 &&
+        (
+            senha.indexOf('0') > -1 ||
+            senha.indexOf('1') > -1 ||
+            senha.indexOf('2') > -1 ||
+            senha.indexOf('3') > -1 ||
+            senha.indexOf('4') > -1 ||
+            senha.indexOf('5') > -1 ||
+            senha.indexOf('6') > -1 ||
+            senha.indexOf('7') > -1 ||
+            senha.indexOf('8') > -1 ||
+            senha.indexOf('9') > -1
+        ) &&
+        (
+            senha.indexOf('!') > -1 ||
+            senha.indexOf('@') > -1 ||
+            senha.indexOf('#') > -1 ||
+            senha.indexOf('$') > -1 ||
+            senha.indexOf('%') > -1 ||
+            senha.indexOf('"') > -1 ||
+            senha.indexOf('&') > -1 ||
+            senha.indexOf('*') > -1
+        )) {
+            validar_senha.innerHTML = 'Senha forte';
+            var confirmarSenha = input_confirmar.value;
         
-        if (tamanho < 8) {
-            validacao_senha.innerHTML = 'Senha fraca'
         } else {
-            validacao_senha.innerHTML = 'Senha forte'
+            validar_senha.innerHTML = 'Senha fraca';
+            cadastroValidado = false;
+        }
+
+        if (senha == confirmarSenha) {
+            confirmar_senha.innerHTML = 'Senhas são iguais!';
+            cadastroValidado = true;
+        } else {
+            confirmar_senha.innerHTML = 'Senhas não são iguais!';
+            cadastroValidado = false;
+        }
+    }
+
+    function validarEmail() {
+        var email = input_email.value;
+
+        if (email.indexOf('@') == -1) {
+            validar_email.innerHTML = 'E-mail inválido!';
+            cadastroValidado = false;
+        } else {
+            validar_email.innerHTML = '';
+            cadastroValidado = true;
         }
     }
 </script>

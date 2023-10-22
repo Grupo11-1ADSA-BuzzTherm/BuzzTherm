@@ -120,7 +120,9 @@ div.imagem {
     color: var(--cor-texto);
 }
 
-#validacao_senha {
+.span-validacao {
     width: 100%;
     text-align: right;
+    color: rgb(73, 73, 73);
+    font-size: 15px;
 }
