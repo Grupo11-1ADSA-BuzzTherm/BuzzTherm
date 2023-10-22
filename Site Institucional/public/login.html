@@ -46,7 +46,7 @@
                 <div class="linha"></div>
                 <li class="item-campo">
                     <span>Email:</span>
-                    <input type="text" id="input_entrar">
+                    <input type="text" id="input_email">
                 </li>
 
                 <li class="item-campo">
@@ -56,10 +56,10 @@
 
                 <div class="EsqueceuSenha">
                     <a href="recuperar_senha.html">
-                        <span>Esqueceu a senha?</span>
-                </div>
+                        <span>Esqueceu a senha?</span> </a>
+                </div> 
 
-                <button class="botao" onclick="entrarConta()">
+                <button class="botao" onclick="entrarConta() ">
 
                     Entrar </button>
 
@@ -77,6 +77,23 @@
 
 <script>
     function entrarConta() {
+        var email = input_email.value
+        var senha= input_senha.value
+        email1= "moises@gmail.com"
+        senha1="Moises12345#"
+        email2= "vini@hotmail.com"
+        senha2= "Vini9876$"
+        email3= "yasmin@sptech.school" 
+        senha3= "Yasmin1357@"
+       
         
+        if((email == email1 && senha==senha1) || (email==email2 && senha==senha2) || (email==email3 && senha==senha3) ){
+            alert(`Login com sucesso`)
+            location.href="index.html"
+        }
+        else {
+            alert(`Dados incorretos`)
+        }
+
     }
 </script>
