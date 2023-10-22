@@ -1,16 +1,20 @@
-*{
+main *{
     margin: 0;
     padding: 0;
-    font-family: monospace;
 }
 
-body {
-    background-color: #f6f6f6;
+main {
+    background-color: #1d1d1d;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
+}
+
+.header .container {
+    justify-content: center;
+    gap: 60%;
 }
 
 .dash-container {
@@ -26,12 +30,6 @@ body {
     border-radius: 15px;
     margin: 10px 0;
     box-shadow: 4px 4px 14px -6px #000000;
-
-
-    /* z-index: -1; */
-    /* -webkit-box-shadow: 0px 0px 4px 2px #000000;
-    -moz-box-shadow: 0px 0px 4px 2px #000000; */
-
 }
 
 .graph-container {
@@ -90,11 +88,6 @@ body {
     margin-right: 1rem;
 }
 
-.li-flex i {
-    font-size: 40px;
-    margin-right: 2rem;
-}
-
 .msg-alerta {
     margin-top: 1rem;
     display: flex;
@@ -126,7 +119,7 @@ body {
     font-size: 20px;
 }
 
-img{
+main img {
     margin: 0 10px;
     width: 30px;
     height: 30px;
@@ -141,4 +134,15 @@ img{
 .lupa{
     width: 20px;
     height: 20px;
+}
+
+.minha-conta img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.notificacoes img {
+    width: 22px;
+    height: 22px;
 }
