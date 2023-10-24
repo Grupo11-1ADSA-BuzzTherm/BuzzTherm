@@ -211,14 +211,14 @@
              você pode estar perdendo um valor significativo da sua produção. Calcule agora e descubra!
              <span class="Negrito">Descubra agora !!!</span></h5> <br> <br>
             
-            --Quantos quadros por colmeia você mantem:<br>
-            <input type="number" id="inpQntQuadro"><br>
+            Quantas colmeias você tem?<br>
+            <input type="number" id="inpQntColmeia" placeholder="100"><br>
+
+            Sua colmeia possui quantos quadros?<br>
+            <input type="number" id="inpQntQuadro" placeholder="10"><br>
             
-            --Insira aqui seu numero de colmeias:<br>
-            <input type="number" id="inpQntColmeia"><br>
-            
-            --Insira é sua média de produção mensal de mel(kg):<br>
-            <input type="number" id="iptProducaoMensalMel"><br>
+            Qual é sua média de produção mensal de mel em kg?<br>
+            <input type="number" id="iptProducaoMensalMel" placeholder="35000"><br>
         
             <button onclick="calcularColmeias()"><span class="Negrito">Confira agora</span></button>
             <div id="divExibicao"></div>
@@ -239,6 +239,12 @@
                 var abelhaQuadro = 6000;
                 var precoMedioMelKgDolar = 4;
                 var cotacaoDolarReal = 5.08;
+
+
+                const formatarMoeda = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                });
                 
                 qntAbelhaColmeia = qntQuadroColmeia * abelhaQuadro;
                 qntAbelhaTotal = qntAbelhaColmeia * qntColmeia;
@@ -247,10 +253,11 @@
                 perdaMelMes *= 1.4;
                 perdaMelMes = producaoMensalMel - perdaMelMes;
                 perdaMonetariaMes = perdaMelMes * (precoMedioMelKgDolar * cotacaoDolarReal);
+                perdaMonetariaMes= formatarMoeda.format(perdaMonetariaMes);
         
                 divExibicao.innerHTML = `<br>Por falta de cuidado com o calor e a umidade, você perde <span class ="saida"> ${qntPerdaAbelhaTotal}</span>
                  abelhas por mês, que não chegam a nascer por problemas de fertilidade.<br> Te dando uma perda de mel de 
-                 <span class = "saida">${perdaMelMes}</span> kg causando um prejuizo de R$ <span class = "saida"> ${perdaMonetariaMes} </span>. 
+                 <span class = "saida">${perdaMelMes}</span> kg causando um prejuizo de <span class = "saida"> ${perdaMonetariaMes} </span>. 
                  Para deixar de perder nos contrate agora mesmo! <span class="Negrito">Contrate um de nossos serviços.</span><br>
                  <br><button> <a href="cadastro.html"> <span class="Negrito">Clique aqui e cadastre sua empresa!</span> </a> </button>`;
         
