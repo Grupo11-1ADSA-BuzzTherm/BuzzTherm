@@ -6,55 +6,100 @@ create table empresa (
 idEmpresa int primary key auto_increment,
 nome varchar(100) not null,
 cnpj char(14)not null,
-telefone char(11)not null,
 email varchar(80)not null,
-senha varchar(25)not null,
-areaTerreno float not null,
-qtdColmeia int not null
-);
+qtdColmeia int not null,
+planoAtual varchar(45)
+constraint chkplan check(planoAtual in("Mensal","Semestral","Anual"))
+)auto_increment=1000;
 
-describe empresa;
+desc empresa;
 
-create table usuario(
-idUsuario int primary key auto_increment,
+create table funcionario(
+idFuncionario int primary key auto_increment,
 login varchar(255)not null,
 senha varchar(45)not null,
-cargo varchar(45)not null
+cargo varchar(45)not null,
+fkEmpresa int,
+foreign key(fkEmpresa) references empresa(idEmpresa)
 );
+
+desc funcionario;
+
+create table telefone(
+idTelefone int primary key auto_increment,
+telefone1 char(11),
+telefone2 char(11),
+telefone3 char(11),
+fkEmpresa int,
+foreign key(fkEmpresa) references empresa(idEmpresa)
+);
+
+desc telefone;
+
+create table endereco(
+idEndereco int primary key auto_increment,
+cep char(8),
+lograduro varchar(255),
+numero int,
+fkEmpresa int,
+foreign key(fkEmpresa) references empresa(idEmpresa)
+);
+
+desc endereco;
 
 create table colmeia(
 idColmeia int primary key auto_increment,
-tamanhoCmCubico float not null,
-tipoAbelha varchar(50)not null
-);
+tamanho char(3) not null,
+tipoColmeia varchar(50)not null,
+fkEmpresa int,
+foreign key(fkEmpresa) references empresa(idEmpresa)
+)auto_increment=100;
 
-describe colmeia;
+desc colmeia;
 
 create table sensorDHT11(
-idSensor int primary key auto_increment
-)auto_increment = 100;
+idSensor int auto_increment,
+fkColmeia int,
+foreign key(fkColmeia) references colmeia(idColmeia),
+situacao tinyint,
+primary key(idSensor, fkColmeia)
+);
 
-describe sensorDHT11;
+desc sensorDHT11;
 
 
 create table registro(
-idRegistro int primary key auto_increment,
+idRegistro int auto_increment,
 dataHora datetime,
-temperatura char(4)not null,
-umidade char(4)not null
+temp float not null,
+umid float not null,
+fkSensor int,
+foreign key (fkSensor) references sensorDHT11(idSensor),
+primary key(idRegistro, fkSensor)
 );
 
-describe registro;
+desc registro;
 
 show tables;
 
 -- a medida utilizada foi de mil metros quadrados ( 42.72km² = 42.720m² de area)
 
 insert into empresa values
-(null, 'Empires Bee', '61696740000107', '11 29893253', 'empires.bee@gmail.com', '123456', '30.000', '56'),
-(null, 'To Bee', '00090625000191', '14 24785423', 'tobeecorporation@live.com', '654321', '42.720', '61'),
-(null, 'BeeMaid Honey', '17942850000101', '14 29843485', 'beemaidhoney@bol.com.br', '456789', '45.000', '84'),
-(null, 'Honey Acres', '30610441000176', '12 28734528', 'honeyacres@hotmail.com', '987654', '35.500', '62');
+(null, 'Empires Bee', '61696740000107', 'empires.bee@gmail.com', '450', 'Semestral'),
+(null, 'To Bee', '00090625000191', 'tobeecorporation@live.com', '395', 'Mensal'),
+(null, 'BeeMaid Honey', '17942850000101', 'beemaidhoney@bol.com.br', '420', 'Anual'),
+(null, 'Honey Acres', '30610441000176', 'honeyacres@hotmail.com', '339', 'Semestral');
+
+-- use para mostrar o erro do check
+insert into empresa values
+(null, 'Empires', '61', 'empires@gmail.com', '45', 'Semanal');
+
+-- parei aqui
+
+
+
+
+
 
 select * from empresa;
 
