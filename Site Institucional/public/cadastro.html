@@ -45,12 +45,12 @@
                 </h1>
                 <div class="linha"></div>
                 <li class="item-campo">
-                    <span>Nome:</span>
+                    <span>Razão Social:</span>
                     <input type="text" id="input_entrar">
                 </li>
 
                 <li class="item-campo">
-                    <span>Sobrenome:</span>
+                    <span>Nome Fantasia:</span>
                     <input type="text" id="">
                 </li>
 
@@ -60,13 +60,13 @@
                 </li>
 
                 <li class="item-campo">
-                    <span>Email:</span>
+                    <span>Email de Contato:</span>
                     <input onkeyup="validarEmail()" type="text" id="input_email">
                     <span id="validar_email" class="span-validacao"></span>
                 </li>
 
                 <li class="item-campo">
-                    <span>Senha:</span>
+                    <span>Senha de Acesso:</span>
                     <input onkeyup="validarCampos()" type="password" id="input_senha">
                     <span id="validar_senha" class="span-validacao"></span>
                 </li>
@@ -108,6 +108,8 @@
     function validarCampos() {
         var senha = input_senha.value
         var tamanhoSenha = senha.length;
+
+
             
         if ((senha != senha.toLowerCase()) && (senha != senha.toUpperCase()) && tamanhoSenha >= 8 &&
         (
@@ -132,21 +134,29 @@
             senha.indexOf('&') > -1 ||
             senha.indexOf('*') > -1
         )) {
+            validar_senha.style.textAlign = 'right';
             validar_senha.innerHTML = 'Senha forte';
             var confirmarSenha = input_confirmar.value;
-        
+
+            if (senha == confirmarSenha) {
+                confirmar_senha.innerHTML = 'Senhas são iguais!';
+                cadastroValidado = true;
+            } else {
+                confirmar_senha.innerHTML = 'Senhas não são iguais!';
+                cadastroValidado = false;
+            }
+            
         } else {
-            validar_senha.innerHTML = 'Senha fraca';
+            validar_senha.style.textAlign = 'left';
+            validar_senha.innerHTML = `
+                Sua senha deve ter:<br>
+                &bull; mais de 8 caracteres<br>
+                &bull; pelo menos uma letra maiúscula e minúscula<br>
+                &bull; menos um número e um caracter especial<br><br>
+            `;
             cadastroValidado = false;
         }
 
-        if (senha == confirmarSenha) {
-            confirmar_senha.innerHTML = 'Senhas são iguais!';
-            cadastroValidado = true;
-        } else {
-            confirmar_senha.innerHTML = 'Senhas não são iguais!';
-            cadastroValidado = false;
-        }
     }
 
     function validarEmail() {

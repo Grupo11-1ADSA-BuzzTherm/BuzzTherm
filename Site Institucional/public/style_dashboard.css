@@ -70,10 +70,14 @@ main {
     font-size: 0.8rem;
     margin: 10px;
     justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
 }
 
 .lista-registro {
     list-style: none;
+    display: flex;
+    flex-direction: column;
 }
 
 .li-flex {
@@ -81,6 +85,22 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.card3 .msg-alerta {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 5px auto;
+}
+
+.card3 .texto-alerta {
+    align-self: flex-start;
+}
+
+.texto-icone-alerta {
+    display: flex;
+    align-items: center;
 }
 
 .datahora-alerta {
@@ -95,24 +115,32 @@ main {
 }
 
 .texto-alerta h3 {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .texto-alerta p {
     font-size: 15px;
 }
 
-.lista-colmeia .msg-alerta {
-    width: 100%;
+.lista-colmeia {
+    display: flex;
+    justify-content: center;
 }
 
-.card4 .titulo {
-    margin-bottom: 1rem;
+.lista-colmeia .msg-alerta {
+    width: 90%;
+}
+
+.situacao-inoperante b {
+    color: red;
+    font-size: 20px;
 }
 
 .situacao-inoperante {
-    color: red;
-    font-size: 20px;
+    background-color: #fffbfb;
+    border: #ff8080 solid 2px;
+    border-radius: 10px;
+    padding: 5px;
 }
 .situacao-normal {
     color: green;
@@ -127,7 +155,6 @@ main img {
 
 .lista-registro p{
     font-size: 15px;
-    padding: 0.5px;
     text-align: center;
 }
 
