@@ -1,6 +1,4 @@
 .planos{
-    /* background-color: #ffffff; */
-    /* background-image: linear-gradient( to bottom, rgb(255, 255, 255), rgb(224, 224, 224), rgb(219, 219, 219));  */
     background-color: #1d1d1d;
 }
 
@@ -8,13 +6,14 @@
     max-width: 1180px;
     margin: 0 auto;
 }
+
 .flex{
     display: flex;
+    height: 650px;
 }
 
 .planos {
-    height: 800px;
-    /* padding: 40px 4%; */
+    height: 700px;
 }
 
 .planos .flex{
@@ -30,12 +29,18 @@
 }
 
 .planos .planos-box{
-    padding: 40px;
+    padding: 50px;
     border-radius: 30px;
     margin-top: 50px;
     background-color: white;
-    transition: 300ms;
+    transition: 100ms;
 }
+
+.planos-box p{
+    font-size: 14px;
+    font-weight: bolder;
+}
+
 
 .planos .planos-box:hover{
     transform: scale(1.05);
@@ -44,6 +49,7 @@
 
 .planos .planos-box h3{
     font-size: 28px;
+    height: 40px;
     margin: 15px 0;
 }
 
@@ -52,5 +58,5 @@
 }
 
 .planos {
-    padding: 50px;
+    padding: 100px;
 }

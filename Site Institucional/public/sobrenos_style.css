@@ -1,11 +1,8 @@
 
-/* .sobre .txt_um h3{
-    margin: 50px;
-    color: #ffd145;
-    font-weight: bold;
-    font-size: 24px;
-    text-decoration: underline;
-} */
+.sobre{
+    align-items: center;
+    text-align: justify;
+}
 
 .sobre img {
     width: 500px;
@@ -17,10 +14,14 @@
     margin: 20px 0;
     width: 700px;
     border-right: 40px;
+    font-weight: bolder;
 }
 
 .txt_sobre h1 {
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+    text-align: center;
+    font-size: 36px;
+
 }
 
 .sobre .sobre-item {
@@ -31,10 +32,17 @@
     padding: 40px 4%;
 }
 
+.mvv-class {
+    display: flex;
+    text-align: justify;
+}
+
+
 .mvv {
     width: 100%;
     display: flex;
     justify-content: center;
+    /* justify-content: space-around; */
     gap: 70px;
 }
 
