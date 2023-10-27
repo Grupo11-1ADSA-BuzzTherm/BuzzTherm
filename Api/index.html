@@ -1,51 +1,171 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Dashoard Buzztherm</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DashBoard</title>
+    <link rel="stylesheet" href="../Site Institucional/public/style.css">
+    <link rel="stylesheet" href="../Site Institucional/public/style_dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-    <style>
-        canvas {
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-    </style>
 </head>
 
 <body>
-    <div>
-        <h1>Colmeia 1</h1>
-        <h1>Umidade</h1>
-        <section style="width:100%">
-            <canvas id="dht11Umidade"></canvas>
-        </section>
-        <h1>Temperatura</h1>
-        <section style="width: 100%;">
-            <canvas id="dht11Temperatura"></canvas>
-        </section>
-        <!-- <h1>Sensor Luminosidade</h1>
-        <section style="width: 100%;">
-            <canvas id="luminosidade"></canvas>
-        </section>
-        <h1>Sensor LM 35 - Temperatura</h1>
-        <section style="width: 100%;">
-            <canvas id="lm35Temperatura"></canvas>
-        </section>
-        <h1>Sensor Chave</h1>
-        <section style="width: 100%;">
-            <canvas id="chave"></canvas>
-        </section> -->
+
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../Site Institucional/public/assets/imgs/logo1.png" alt="">
+                <h1>
+                    Buzztherm
+                </h1>
+            </div>
+
+            <ul>
+                <li class="notificacoes"><img src="../Site Institucional/public/assets/imgs/icons8-lembrete-de-compromissos-50.png" alt=""></li>
+                <li class="minha-conta"><img src="../Site Institucional/public/assets/imgs/licensed-image.jpg" alt=""></li>
+            </ul>
+        </div>
     </div>
 
-    <script>
-        /* -- dht11Umidade -- */
-        var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
-        contextoDht11Umidade.canvas.width = 1000;
-        contextoDht11Umidade.canvas.height = 300;
+    <main>
+        <div class="dash-container">
+            <div class="dash-item graph-container">
+                <div class="card-container card1">
+                    <div class="titulo">
+                        <h1>Ultimos Registros - Colmeia #1</h1>
+                    </div>
+                    <canvas id="dht11Temperatura"></canvas>
+                </div>
+                <div class="card-container card2">
+                    <div class="titulo">
+                        <h1>Últimos Registros - Colmeia #1</h1>
+                    </div>
+                    <canvas id="dht11Umidade"></canvas>
+                </div>
+            </div>
+            <div class="dash-item message-container">
+                <div class="card-container card3">
+                    <div class="titulo">
+                        <h1>Alertas</h1>
+                        <img class="lupa" src="../Site Institucional/public/assets/imgs/lupa.png" alt="">
+                    </div>
+                    <ul class="lista-registro">
+                        <li>
+                            <div class="li-flex">
+                                <div class="msg-alerta">
+                                    <div class="texto-icone-alerta">
+                                        <img src="../Site Institucional/public/assets/imgs/alerta-amarelo.png" alt="">
+                                        <span class="texto-alerta">
+                                        <h3>Umidade</h3>
+                                            <p>Registrado 46%</p>
+                                        </span>
+                                    </div>
+                                    <div class="datahora-alerta">
+                                        15:23<br>29/09
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="li-flex">
+                                <div class="msg-alerta">
+                                    <div class="texto-icone-alerta">
+                                        <img src="../Site Institucional/public/assets/imgs/alerta-amarelo.png" alt="">
+                                        <span class="texto-alerta">
+                                        <h3>Temperatura</h3>
+                                            <p>Registrado 37ºC</p>
+                                        </span>
+                                    </div>
+                                    <div class="datahora-alerta">
+                                        09:44<br>24/09
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="li-flex">
+                                <div class="msg-alerta situacao-inoperante">
+                                    <div class="texto-icone-alerta">
+                                        <img src="../Site Institucional/public/assets/imgs/alerta_vermelho.png" alt="">
+                                        <span class="texto-alerta">
+                                        <h3>Umidade</h3>
+                                            <p>Registrado 75%</p>
+                                        </span>
+                                    </div>
+                                    <div class="datahora-alerta">
+                                        03:07<br>18/09
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="card-container card4">
+                    <div class="titulo">
+                        <h1>Minhas colmeias</h1>
+                        <img class="lupa" src="../Site Institucional/public/assets/imgs/lupa.png" alt="">
+                    </div>
+                    <ul class="lista-registro">
+                        <li>
+                            <div class="li-flex lista-colmeia">
+                                <div class="msg-alerta situacao-inoperante">
+                                    <img src="../Site Institucional/public/assets/imgs/colmeia-icone.png" alt="">
+                                    <span class="texto-alerta">
+                                        <h3>Colmeia #29</h3>
+                                        <p><b>&bull;</b> Situação: Inoperante</p>
+                                    </span>
+                                </div>
+                        </li>
+
+                        <li>
+                            <div class="li-flex lista-colmeia">
+                                <div class="msg-alerta">
+                                    <img src="../Site Institucional/public/assets/imgs/colmeia-icone.png" alt="">
+                                    <span class="texto-alerta">
+                                        <h3>Colmeia #1</h3>
+                                        <p><b class="situacao-normal">&bull;</b> Situação: Normal</p>
+                                    </span>
+                                </div>
+                        </li>
+
+                        <li>
+                            <div class="li-flex lista-colmeia">
+                                <div class="msg-alerta">
+                                    <img src="../Site Institucional/public/assets/imgs/colmeia-icone.png" alt="">
+                                    <span class="texto-alerta">
+                                        <h3>Colmeia #2</h3>
+                                        <p><b class="situacao-normal">&bull;</b> Situação: Normal</p>
+                                    </span>
+                                </div>
+                        </li>
+
+                        <!-- <p><b>Mostrar tudo ▾</b></p> -->
+
+                    </ul>
+
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+
+<script>
+/* -- dht11Umidade -- */
+var contextoDht11Umidade = document.getElementById('dht11Umidade').getContext('2d');
+        // contextoDht11Umidade.canvas.width = 1000;
+        // contextoDht11Umidade.canvas.height = 300;
         var dht11Umidade = new Chart(
             contextoDht11Umidade,
             {
@@ -54,8 +174,8 @@
                     datasets: [{
                         label: 'Umidade',
                         type: 'line',
-                        borderColor: ['#45b3e7'],
-                        backgroundColor: ['#89cff0']
+                        borderColor: 'rgb(85, 92, 179)',
+                        backgroundColor: 'rgb(85, 92, 179)'
                     }]
                 },
                 options: {
@@ -84,8 +204,8 @@
         );
         /* -- dht11Temperatura -- */
         var contextoDht11Temperatura = document.getElementById('dht11Temperatura').getContext('2d');
-        contextoDht11Temperatura.canvas.width = 1000;
-        contextoDht11Temperatura.canvas.height = 300;
+        // contextoDht11Temperatura.canvas.width = 1000;
+        // contextoDht11Temperatura.canvas.height = 300;
         var dht11Temperatura = new Chart(
             contextoDht11Temperatura,
             {
@@ -94,8 +214,8 @@
                     datasets: [{
                         label: "Temperatura",
                         type: 'line',
-                        borderColor: ['#ff3232'],
-                        backgroundColor: ['#ff7f7f']
+                        borderColor: 'rgb(255, 145, 77)',
+                        backgroundColor: 'rgb(255, 145, 77)'
                     }]
                 },
                 options: {
@@ -109,7 +229,7 @@
                         yAxes: [{
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Luminosidade'
+                                labelString: 'Temperatura'
                             },
                             ticks: {
                                 beginAtZero: true
@@ -122,126 +242,7 @@
                 }
             }
         );
-        // /* -- luminosidade -- */
-        // var contextoLuminosidade = document.getElementById('luminosidade').getContext('2d');
-        // contextoLuminosidade.canvas.width = 1000;
-        // contextoLuminosidade.canvas.height = 300;
-        // var luminosidade = new Chart(
-        //     contextoLuminosidade,
-        //     {
-        //         type: 'line',
-        //         data: {
-        //             datasets: [{
-        //                 label: 'Luminosidade',
-        //                 type: 'line',
-        //                 borderColor: ['#ffd902'],
-        //                 backgroundColor: ['#ffe135']
-        //             }]
-        //         },
-        //         options: {
-        //             scales: {
-        //                 xAxes: [{
-        //                     distribution: 'series',
-        //                     ticks: {
-        //                         beginAtZero: true
-        //                     }
-        //                 }],
-        //                 yAxes: [{
-        //                     scaleLabel: {
-        //                         display: true,
-        //                         labelString: 'Luminosidade'
-        //                     },
-        //                     ticks: {
-        //                         beginAtZero: true
-        //                     }
-        //                 }]
-        //             },
-        //             animation: {
-        //                 duration: 0
-        //             }
-        //         }
-        //     }
-        // );
-        // /* -- lm35Temperatura */
-        // var contextoLm35Temperatura = document.getElementById('lm35Temperatura').getContext('2d');
-        // contextoLm35Temperatura.canvas.width = 1000;
-        // contextoLm35Temperatura.canvas.height = 300;
-        // var lm35Temperatura = new Chart(
-        //     contextoLm35Temperatura,
-        //     {
-        //         type: 'line',
-        //         data: {
-        //             datasets: [{
-        //                 label: 'Temperatura',
-        //                 type: 'line',
-        //                 borderColor: ['#ffd902'],
-        //                 backgroundColor: ['#ffe135']
-        //             }]
-        //         },
-        //         options: {
-        //             scales: {
-        //                 xAxes: [{
-        //                     distribution: 'series',
-        //                     ticks: {
-        //                         beginAtZero: true
-        //                     }
-        //                 }],
-        //                 yAxes: [{
-        //                     scaleLabel: {
-        //                         display: true,
-        //                         labelString: 'Temperatura'
-        //                     },
-        //                     ticks: {
-        //                         beginAtZero: true
-        //                     }
-        //                 }]
-        //             },
-        //             animation: {
-        //                 duration: 0
-        //             }
-        //         }
-        //     }
-        // );
-        // /* -- chave */
-        // var contextoChave = document.getElementById('chave').getContext('2d');
-        // contextoChave.canvas.width = 1000;
-        // contextoChave.canvas.height = 300;
-        // var chave = new Chart(
-        //     contextoChave,
-        //     {
-        //         type: 'line',
-        //         data: {
-        //             datasets: [{
-        //                 label: 'Chave',
-        //                 type: 'line',
-        //                 borderColor: ['#ffd902'],
-        //                 backgroundColor: ['#ffe135']
-        //             }]
-        //         },
-        //         options: {
-        //             scales: {
-        //                 xAxes: [{
-        //                     distribution: 'series',
-        //                     ticks: {
-        //                         beginAtZero: true
-        //                     }
-        //                 }],
-        //                 yAxes: [{
-        //                     scaleLabel: {
-        //                         display: true,
-        //                         labelString: 'Chave'
-        //                     },
-        //                     ticks: {
-        //                         beginAtZero: true
-        //                     }
-        //                 }]
-        //             },
-        //             animation: {
-        //                 duration: 0
-        //             }
-        //         }
-        //     }
-        // );
+        
 
         var paginacao = {};
         var tempo = {};
@@ -276,12 +277,5 @@
         setInterval(() => {
             obterDados(dht11Umidade, 'dht11/umidade');
             obterDados(dht11Temperatura, 'dht11/temperatura');
-            // obterDados(luminosidade, 'luminosidade');
-            // obterDados(lm35Temperatura, 'lm35/temperatura');
-            // obterDados(chave, 'chave');
         }, 1000);
-
-    </script>
-</body>
-
-</html>
+</script>

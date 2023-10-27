@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_dashboard.css">
 </head>
@@ -33,13 +35,13 @@
             <div class="dash-item graph-container">
                 <div class="card-container card1">
                     <div class="titulo">
-                        <h1>Ultimos registros</h1>
+                        <h1>Ultimos Registros - Colmeia #1</h1>
                     </div>
                     <canvas id="grafico_line"></canvas>
                 </div>
                 <div class="card-container card2">
                     <div class="titulo">
-                        <h1>Todos os registros</h1>
+                        <h1>Últimos Registros - Colmeia #1</h1>
                     </div>
                     <canvas id="grafico_bar"></canvas>
                 </div>
@@ -57,8 +59,8 @@
                                     <div class="texto-icone-alerta">
                                         <img src="assets/imgs/alerta-amarelo.png" alt="">
                                         <span class="texto-alerta">
-                                        <h3>Umidade</h3>
-                                            <p>Registrado 77%</p>
+                                            <h3>Umidade</h3>
+                                            <p>Registrado 46%</p>
                                         </span>
                                     </div>
                                     <div class="datahora-alerta">
@@ -74,8 +76,8 @@
                                     <div class="texto-icone-alerta">
                                         <img src="assets/imgs/alerta-amarelo.png" alt="">
                                         <span class="texto-alerta">
-                                        <h3>Temperatura</h3>
-                                            <p>Registrado 33ºC</p>
+                                            <h3>Temperatura</h3>
+                                            <p>Registrado 37ºC</p>
                                         </span>
                                     </div>
                                     <div class="datahora-alerta">
@@ -91,8 +93,8 @@
                                     <div class="texto-icone-alerta">
                                         <img src="assets/imgs/alerta_vermelho.png" alt="">
                                         <span class="texto-alerta">
-                                        <h3>Umidade</h3>
-                                            <p>Registrado 94%</p>
+                                            <h3>Umidade</h3>
+                                            <p>Registrado 75%</p>
                                         </span>
                                     </div>
                                     <div class="datahora-alerta">
@@ -172,15 +174,14 @@
     ];
 
     const labelsBar = [
-        `Fevereiro`,
-        `Março`,
-        `Abril`,
-        `Maio`,
-        `Junho`,
-        `Julho`,
-        `Agosto`,
-        `Setembro`,
-        `Outubro`,
+        '12:00',
+        '13:00',
+        '14:00',
+        '15:00',
+        '16:00',
+        '17:00',
+        '18:00',
+        '19:00',
     ];
 
     const data = {
@@ -192,13 +193,7 @@
             label: `Temperatura`,
             backgroundColor: `rgb(255, 145, 77)`,
             borderColor: `rgb(255, 145, 77)`,
-            data: [32, 30, 30, 29, 28, 28, 30, 31],
-        },
-        {
-            label: `Umidade`,
-            backgroundColor: `rgb(85, 92, 179)`,
-            borderColor: `rgb(85, 92, 179)`,
-            data: [78, 80, 79, 82, 77, 79, 80, 82],
+            data: [34, 35, 33, 35, 34, 33, 34, 33],
         },
         ]
     }
@@ -208,19 +203,11 @@
         labels: labelsBar,
 
         datasets: [{
-
-            label: `Temperatura`,
-            backgroundColor: `rgb(255, 145, 77)`,
-            borderColor: `rgb(255, 145, 77)`,
-            data: [28, 29, 28, 26, 25, 22, 27, 30, 33],
-        },
-        {
             label: `Umidade`,
             backgroundColor: `rgb(85, 92, 179)`,
             borderColor: `rgb(85, 92, 179)`,
-            data: [80, 75, 73, 77, 90, 69, 68, 80, 91],
+            data: [58, 60, 59, 57, 57, 55, 58, 62],
         },
-
         ]
 
     }
@@ -229,6 +216,23 @@
         type: `line`,
         data: data,
         options: {
+            scales: {
+                xAxes: [{
+                    distribution: 'series',
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Temperatura'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
             layout: {
                 padding: 20
             }
@@ -236,9 +240,26 @@
     }
 
     const config2 = {
-        type: `bar`,
+        type: `line`,
         data: data2,
         options: {
+            scales: {
+                xAxes: [{
+                    distribution: 'series',
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Umidade'
+                    },
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
             layout: {
                 padding: 20
             }
