@@ -78,7 +78,7 @@
                 </li>
                 
                 <button class="botao" onclick="cadastrarCliente()">
-                    Cadastrar
+                    Cadastrar Endereço
                 </button>
 
                 <div class="EsqueceuSenha">
@@ -99,7 +99,7 @@
 
     function cadastrarCliente() {
         if (cadastroValidado == true) {
-            alert('Usuário cadastrado com sucesso!');
+           location.href = 'cadastroendereco.html'
         } else {
             alert('Reveja suas informações.');
         }

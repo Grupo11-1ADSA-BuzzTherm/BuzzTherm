@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sobrenos_style.css">
+    <link rel="stylesheet" href="nossosprojetos_style.css">
+    <link rel="stylesheet" href="planos_style.css">
+    <link rel="stylesheet" href="calculadora.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="logo"><img src="assets/imgs/logo1.png" alt="">
+                <h1>
+                    Buzztherm
+                </h1>
+            </div>
+
+            <ul>
+                <li> <a href="index.html">Home</a></li>
+                <li> <a href="index.html #sobrenos">Sobre nós</a></li>
+                <li> <a href="index.html #planos">Planos</a></li>
+                <li> <a href="index.html #simule">Simule</a></li>
+                <li><a href="index.html #contato">Contato</a></li>
+                <li>|</li>
+                <li><a class="btn-cadastro login" href="login.html"><span>Login</span></a></li>
+                <li><a class="btn-cadastro cadastro" href="cadastro.html"><span>Cadastro</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="corpo-login">
+        <div class="container">
+            <div class="campos">
+                <h2>Bem-vindo!</h2>
+                <h1 class="Titulo">
+                    Cadastrar Endereço
+                </h1>
+                <div class="linha"></div>
+                <li class="item-campo">
+                    <span>CEP:</span>
+                    <input type="text" id="cep">
+                </li>
+
+                <li class="item-campo">
+                    <span>Logradouro:</span>
+                    <input type="text" id="logradouro">
+                </li>
+
+                <li class="item-campo">
+                    <span>Número:</span>
+                    <input type="text" id="numero">
+                </li>
+
+                <li class="item-campo">
+                    <span>Bairro:</span>
+                    <input type="text" id="bairro">                    
+                </li>
+
+                <li class="item-campo">
+                    <span>Município:</span>
+                    <input type="text" id="municipio">                    
+                </li>
+                
+                <li class="item-campo">
+                    <span>Estado:</span>
+                    <select name="" id="">
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="MG">MG</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RS</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
+                </li>
+                
+                <button class="botao" onclick="finalizarCadastro()">
+                    Finalizar Cadastro
+                </button>
+
+                </li>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function finalizarCadastro (){
+        location.href = 'login.html'
+    }
+</script>
