@@ -1,32 +1,28 @@
 #include "DHT.h"
-#define dht_type DHT11 //define qual o tipo de sensor DHTxx que se está utilizando
+#define dht_type DHT11
 int dht_pin = A0;
-DHT dht_1 = DHT(dht_pin, dht_type); //pode-se configurar diversos sensores DHTxx
+DHT dht_11 = DHT(dht_pin, dht_type);
 
-int switch_pin = 7;
 void setup()
 {
 Serial.begin(9600);
-dht_1.begin();
-pinMode(switch_pin, INPUT);
+dht_11.begin();
 }
 void loop()
 {
-/**
-* Bloco do DHT11
-*/
-float umidade = dht_1.readHumidity();
-float temperatura = dht_1.readTemperature();
+float umidade = dht_11.readHumidity();
+float temperatura = dht_11.readTemperature();
+umidade = 0.333 * umidade + 36.68;
+temperatura = 1.5 * temperatura - 5;
+
 if (isnan(temperatura) or isnan(umidade))
 {
 Serial.println("Erro ao ler o DHT");
 }
 else
 {
-// Serial.print("Umidade: ");
 Serial.print(umidade);
 Serial.print(";");
-// Serial.print("Temperatura: ");
 Serial.println(temperatura);
 
 }
