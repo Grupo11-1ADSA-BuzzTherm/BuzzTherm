@@ -265,13 +265,32 @@ textarea#mensagem {
 }
 
 
-.footer {
-    height: 60px;
+footer .container {
+    height: 200px;
     width: 100%;
     background-color: black;
     display: flex;
     align-items: center;
     justify-content: center;
+    bottom: 0;
+    flex-direction: column;
+}
+
+footer ul {
+    display: flex;
+    color: white;
+    list-style: none;
+    justify-content: space-around;
+    width: 60%;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+}
+
+.icone-rede-social {
+    width: 15%;
 }
 
 .footer h4 {
