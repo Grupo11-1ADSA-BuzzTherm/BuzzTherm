@@ -11,7 +11,7 @@ const SERVIDOR_PORTA = 3300;
 // configure a linha abaixo caso queira que os dados capturados sejam inseridos no banco de dados.
 // false -> nao insere
 // true -> insere
-const HABILITAR_OPERACAO_INSERIR = false;
+const HABILITAR_OPERACAO_INSERIR = true;
 
 // altere o valor da variável AMBIENTE para o valor desejado:
 // API conectada ao banco de dados remoto, SQL Server -> 'producao'
@@ -19,8 +19,16 @@ const HABILITAR_OPERACAO_INSERIR = false;
 const AMBIENTE = 'desenvolvimento';
 
 const serial = async (
-    valoresDht11Umidade,
-    valoresDht11Temperatura,
+    valoresDht11Umidade1,
+    valoresDht11Temperatura1,
+    valoresDht11Umidade2,
+    valoresDht11Temperatura2,
+    valoresDht11Umidade3,
+    valoresDht11Temperatura3,
+    valoresDht11Umidade4,
+    valoresDht11Temperatura4,
+    valoresDht11Umidade5,
+    valoresDht11Temperatura5,
     // valoresLuminosidade,
     // valoresLm35Temperatura,
     // valoresChave
@@ -30,12 +38,11 @@ const serial = async (
     if (AMBIENTE == 'desenvolvimento') {
         poolBancoDados = mysql.createPool(
             {
-                // altere!
                 // CREDENCIAIS DO BANCO - MYSQL WORKBENCH
                 host: 'localhost',
-                user: 'USUARIO_DO_BANCO_LOCAL',
-                password: 'SENHA_DO_BANCO_LOCAL',
-                database: 'DATABASE_LOCAL'
+                user: 'insertGrupo11',
+                password: 'grupo11',
+                database: 'bdBuzzTherm'
             }
         ).promise();
     } else if (AMBIENTE == 'producao') {
@@ -62,17 +69,33 @@ const serial = async (
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
         //console.log(data);
         const valores = data.split(';');
-        const dht11Umidade = parseFloat(valores[0]);
-        const dht11Temperatura = parseFloat(valores[1]);
-        // const lm35Temperatura = parseFloat(valores[2]);
-        // const luminosidade = parseFloat(valores[3]);
-        // const chave = parseInt(valores[4]);
+        // const dht11Umidade1 = parseFloat(valores[0]);
+        // const dht11Temperatura1 = parseFloat(valores[1]);
+        // const dht11Umidade2 = parseFloat(valores[2]);
+        // const dht11Temperatura2 = parseFloat(valores[3]);
+        // const dht11Umidade3 = parseFloat(valores[4]);
+        // const dht11Temperatura3 = parseFloat(valores[5]);
+        // const dht11Umidade4 = parseFloat(valores[6]);
+        // const dht11Temperatura4 = parseFloat(valores[7]);
+        // const dht11Umidade5 = parseFloat(valores[8]);
+        // const dht11Temperatura5 = parseFloat(valores[9]);
+        // // const lm35Temperatura = parseFloat(valores[2]);
+        // // const luminosidade = parseFloat(valores[3]);
+        // // const chave = parseInt(valores[4]);
 
-        valoresDht11Umidade.push(dht11Umidade);
-        valoresDht11Temperatura.push(dht11Temperatura);
-        // valoresLuminosidade.push(luminosidade);
-        // valoresLm35Temperatura.push(lm35Temperatura);
-        // valoresChave.push(chave);
+        // valoresDht11Umidade1.push(dht11Umidade1);
+        // valoresDht11Temperatura1.push(dht11Temperatura1);
+        // valoresDht11Umidade2.push(dht11Umidade2);
+        // valoresDht11Temperatura2.push(dht11Temperatura2);
+        // valoresDht11Umidade3.push(dht11Umidade3);
+        // valoresDht11Temperatura3.push(dht11Temperatura3);
+        // valoresDht11Umidade4.push(dht11Umidade4);
+        // valoresDht11Temperatura4.push(dht11Temperatura4);
+        // valoresDht11Umidade5.push(dht11Umidade5);
+        // valoresDht11Temperatura5.push(dht11Temperatura5);
+        // // valoresLuminosidade.push(luminosidade);
+        // // valoresLm35Temperatura.push(lm35Temperatura);
+        // // valoresChave.push(chave);
 
         if (HABILITAR_OPERACAO_INSERIR) {
             if (AMBIENTE == 'producao') {
@@ -99,16 +122,17 @@ const serial = async (
 
             } else if (AMBIENTE == 'desenvolvimento') {
 
-                // altere!
-                // Este insert irá inserir os dados na tabela "medida"
-                // -> altere nome da tabela e colunas se necessário
-                // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
-                // >> você deve ter o aquario de id 1 cadastrado.
-                await poolBancoDados.execute(
-                    'INSERT INTO medida (dht11_umidade, dht11_temperatura, luminosidade, lm35_temperatura, chave, momento, fk_aquario) VALUES (?, ?, ?, ?, ?, now(), 1)',
-                    [dht11Umidade, dht11Temperatura, luminosidade, lm35Temperatura, chave]
-                );
-                console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura + ", " + luminosidade + ", " + lm35Temperatura + ", " + chave)
+                // Serão feitos 5 inserts, um para cada sensor
+                for (var sensorAtual = 0; sensorAtual < valores.length; sensorAtual += 2) {
+                    console.log(sensorAtual)
+                    var umiAtual = parseFloat(valores[sensorAtual])
+                    var tempAtual = parseFloat(valores[sensorAtual+1])
+
+                    await poolBancoDados.execute(
+                        `INSERT INTO registro (fkSensor, umid, temp) VALUES 
+                        (${(sensorAtual/2)+1}, ${umiAtual}, ${tempAtual})`
+                    );
+                }
 
             } else {
                 throw new Error('Ambiente não configurado. Verifique o arquivo "main.js" e tente novamente.');
