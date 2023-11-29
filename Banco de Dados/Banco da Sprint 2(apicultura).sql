@@ -6,13 +6,13 @@ create table empresa (
 idEmpresa int primary key auto_increment,
 razaoSocial varchar(100) not null,
 nomeFantasia varchar(100) not null,
-cnpj char(14)not null,
+cnpj char(14) not null,
 enderecoEmpresa varchar(255) not null,
 uf varchar(2) not null,
-email varchar(80)not null,
+email varchar(80) not null,
 telefone1 char(11),
 telefone2 char(11),
-qtdColmeia int not null,
+-- qtdColmeia int not null,
 planoAtual varchar(45)
 constraint chkplan check(planoAtual in("Mensal","Semestral","Anual")),
 fkFilial int not null ,
@@ -21,18 +21,19 @@ foreign key (fkFilial) references empresa(idEmpresa)
 
 desc empresa;
 
-create table funcionario(
+create table funcionario (
 idFuncionario int primary key auto_increment,
-login varchar(255)not null,
-senha varchar(45)not null,
-cargo varchar(45)not null,
+nome varchar(45) not null,
+email varchar(80) not null,
+senha varchar(60) not null,
+cargo varchar(45) not null,
 fkEmpresa int not null,
 foreign key(fkEmpresa) references empresa(idEmpresa)
 );
 
 desc funcionario;
 
-create table setor(
+create table setor (
 idSetor int primary key auto_increment,
 nomeFazenda varchar(255),
 fkEmpresa int,
@@ -41,10 +42,10 @@ foreign key(fkEmpresa) references empresa(idEmpresa)
 
 desc setor;
 
-create table colmeia(
+create table colmeia (
 idColmeia int auto_increment,
 qtdQuadros int not null,
-tipoColmeia varchar(50)not null,
+tipoColmeia varchar(50) not null,
 fkSetor int not null,
 foreign key(fkSetor) references setor(idSetor),
 primary key (idColmeia,fkSetor)
@@ -52,7 +53,7 @@ primary key (idColmeia,fkSetor)
 
 desc colmeia;
 
-create table sensorDHT11(
+create table sensor (
 idSensor int primary key auto_increment,
 situacao tinyint,
 fkColmeia int,
@@ -61,16 +62,16 @@ fkSetor int,
 foreign key (fkSetor) references setor(idSetor)
 );
 
-desc sensorDHT11;
+desc sensor;
 
 
-create table registro(
+create table registro (
 idRegistro int primary key auto_increment,
 dataHora datetime,
 temp float not null,
 umid float not null,
 fkSensor int not null,
-foreign key (fkSensor) references sensorDHT11(idSensor)
+foreign key (fkSensor) references sensor(idSensor)
 );
 
 desc registro;
@@ -147,7 +148,7 @@ on fkSetor = idSetor
 join empresa
 on fkEmpresa = idEmpresa;
 
-insert into sensorDHT11 values
+insert into sensor values
 (null, 1, 10, 1),
 (null, 1, 12, 4),
 (null, 1, 14, 1),
@@ -156,9 +157,9 @@ insert into sensorDHT11 values
 (null, 1, 16, 4),
 (null, 1, 11, 2);
 
-select * from sensorDHT11;
+select * from sensor;
 
-select * from sensorDHT11 as sensor
+select * from sensor as sensor
 join colmeia
 on fkColmeia = idColmeia
 inner join setor
@@ -180,7 +181,7 @@ idSensor as 'Sensor',
 dataHora as 'Horário',
 temp as 'Temperatura(C°)',
 umid as ' umidade(%)'
-from sensorDHT11
+from sensor
 right join registro
 on fkSensor = idSensor;
 
@@ -194,7 +195,7 @@ st.nomeFazenda as 'Fazenda',
 e.nomeFantasia as 'Empresa',
 e.uf as 'Estado'
 from registro as r
-join sensorDHT11 as sen
+join sensor as sen
 on r.fkSensor = sen.idSensor
 inner join colmeia as c
 on sen.fkColmeia = c.idColmeia
