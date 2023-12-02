@@ -100,7 +100,7 @@ body {
 }
 
 .banner {
-    background-image: url(assets/imgs/OIG.jpg);
+    background-image: url(../assets/imgs/OIG.jpg);
     background-size: cover;
 }
 

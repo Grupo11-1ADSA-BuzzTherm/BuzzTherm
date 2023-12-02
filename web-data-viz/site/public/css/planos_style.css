@@ -1,0 +1,62 @@
+.planos{
+    background-color: #1d1d1d;
+}
+
+.interface{
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.flex{
+    display: flex;
+    height: 650px;
+}
+
+.planos {
+    height: 700px;
+}
+
+.planos .flex{
+    gap: 60px;
+}
+
+.interface .titulo{
+    text-align: center;
+    font-size: 40px;
+    border-top: 50px;
+    border-bottom: 20px;
+    color: white;
+}
+
+.planos .planos-box{
+    padding: 50px;
+    border-radius: 30px;
+    margin-top: 50px;
+    background-color: white;
+    transition: 100ms;
+}
+
+.planos-box p{
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+
+.planos .planos-box:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 8px #000000;
+}
+
+.planos .planos-box h3{
+    font-size: 28px;
+    height: 40px;
+    margin: 15px 0;
+}
+
+.planos-box img {
+    border-radius: 20px;
+}
+
+.planos {
+    padding: 100px;
+}
