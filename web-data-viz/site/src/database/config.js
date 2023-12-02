@@ -5,7 +5,7 @@ var sql = require('mssql');
 var sqlServerConfig = {
     server: "SEU_SERVIDOR",
     database: "SEU_BANCO_DE_DADOS",
-    user: "SEU_USUARIO",
+    user: "SEU_funcionario",
     password: "SUA_SENHA",
     pool: {
         max: 10,

@@ -64,6 +64,18 @@
                     <input type="text" id="input_email">
                     <span id="validar_email" class="span-validacao"></span>
                 </li>
+
+                <li class="item-campo">
+                    <span>Senha de Acesso:</span>
+                    <input onkeyup="validarSenha()" type="password" id="input_senha">
+                    <span id="validar_senha" class="span-validacao"></span>
+                </li>
+                
+                <li class="item-campo">
+                    <span>Confirmar Senha:</span>
+                    <input onkeyup="validarSenha()" type="password" id="input_confirmar">
+                    <span id="confirmar_senha" class="span-validacao"></span>
+                </li>
                 
                 <li class="item-campo" id="telefone">
                     <span> telefone</span>
@@ -101,13 +113,16 @@
 
     function cadastrarCliente() {
 
-
         var razaoSocial = input_razao_social.value;
         var nomeFantasiaVar = input_nome_fantasia.value;
         var cnpjVar = input_cnpj.value;
-        var emailVar = input_email.value;
         var telefoneVar = input_telefone.value;
         var planoVar = Planos.value;
+
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value
+
+        var cadastroValidado = false;
 
         if (emailVar.indexOf('@') == -1) {
             alert('E-mail inválido. Por favor, corrija.');
@@ -120,33 +135,35 @@
             nomeFantasiaVar == "" ||
             cnpjVar == "" ||
             telefoneVar == "" ||
-            planoVar == ""
+            planoVar == "" ||
+            cadastroValidado
         ) {
             alert("Por favor, preencha todos os campos.");
         
             return false;
         }
 
-        fetch("/usuarios/cadastrar", {
+        fetch("/funcionarios/cadastrar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                 razaoSocialServer: razaoSocial,
+                razaoSocialServer: razaoSocial,
                 nomeFantasiaServer: nomeFantasiaVar,
                 cnpjServer: cnpjVar,
                 emailServer: emailVar,
                 telefoneServer: telefoneVar,
                 planoServer: planoVar,
+                senhaServer: senhaVar
             }),
         })
             .then(function (resposta) {
                 if (resposta.ok) {
                     alert("Cadastro realizado com sucesso! Redirecionando para a tela de cadastro de endereço...");
-                    window.location = "cadastroendereco.html";
-                    limparFormulario();
-              
+                    cadastrarFunc(razaoSocial, emailVar, senhaVar, cnpjVar).then(
+                        window.location = "cadastroendereco.html"
+                    )
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
@@ -158,4 +175,86 @@
 
         return false;
     }
+
+    function cadastrarFunc(nome, email, senha, cnpj) {
+        fetch("/funcionarios/cadastrarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                emailServer: email,
+                senhaServer: senha,
+                cnpjServer: cnpj,
+                admServer: 1
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso! Redirecionando para a tela de cadastro de endereço...");
+                    sessionStorage.CNPJ = cnpj;
+                    window.location = "cadastroendereco.html";
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+    
+            });
+    }
+
+    function validarSenha() {
+        var senha = input_senha.value
+        var tamanhoSenha = senha.length;
+
+        if ((senha != senha.toLowerCase()) && (senha != senha.toUpperCase()) && tamanhoSenha >= 8 &&
+        (
+            senha.indexOf('0') > -1 ||
+            senha.indexOf('1') > -1 ||
+            senha.indexOf('2') > -1 ||
+            senha.indexOf('3') > -1 ||
+            senha.indexOf('4') > -1 ||
+            senha.indexOf('5') > -1 ||
+            senha.indexOf('6') > -1 ||
+            senha.indexOf('7') > -1 ||
+            senha.indexOf('8') > -1 ||
+            senha.indexOf('9') > -1
+        ) &&
+        (
+            senha.indexOf('!') > -1 ||
+            senha.indexOf('@') > -1 ||
+            senha.indexOf('#') > -1 ||
+            senha.indexOf('$') > -1 ||
+            senha.indexOf('%') > -1 ||
+            senha.indexOf('"') > -1 ||
+            senha.indexOf('&') > -1 ||
+            senha.indexOf('*') > -1
+        )) {
+            validar_senha.style.textAlign = 'right';
+            validar_senha.innerHTML = 'Senha forte';
+            var confirmarSenha = input_confirmar.value;
+
+            if (senha == confirmarSenha) {
+                confirmar_senha.innerHTML = 'Senhas são iguais!';
+                cadastroValidado = true;
+            } else {
+                confirmar_senha.innerHTML = 'Senhas não são iguais!';
+                cadastroValidado = false;
+            }
+            
+        } else {
+            validar_senha.style.textAlign = 'left';
+            validar_senha.innerHTML = `
+                Sua senha deve ter:<br>
+                &bull; mais de 8 caracteres<br>
+                &bull; pelo menos uma letra maiúscula e minúscula<br>
+                &bull; menos um número e um caracter especial<br><br>
+            `;
+            cadastroValidado = false;
+        }
+
+    }
+
 </script>
