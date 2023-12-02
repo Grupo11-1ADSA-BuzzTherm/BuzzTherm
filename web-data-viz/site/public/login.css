@@ -126,3 +126,13 @@ div.imagem {
     color: rgb(73, 73, 73);
     font-size: 15px;
 }
+
+.loading-div {
+    width: 50px;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }

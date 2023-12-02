@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sobrenos_style.css">
+    <link rel="stylesheet" href="nossosprojetos_style.css">
+    <link rel="stylesheet" href="planos_style.css">
+    <link rel="stylesheet" href="calculadora.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="logo"><img src="assets/imgs/logo1.png" alt="">
+                <h1>
+                    Buzztherm
+                </h1>
+            </div>
+
+            <ul>
+                <li> <a href="index.html">Home</a></li>
+                <li> <a href="index.html #sobrenos">Sobre nós</a></li>
+                <li> <a href="index.html #planos">Planos</a></li>
+                <li> <a href="index.html #simule">Simule</a></li>
+                <li><a href="index.html #contato">Contato</a></li>
+                <li>|</li>
+                <li><a class="btn-cadastro login" href="login.html"><span>Login</span></a></li>
+                <li><a class="btn-cadastro cadastro" href="cadastro.html"><span>Cadastro</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="corpo-login">
+        <div class="container">
+            <div class="campos">
+                <h2>Bem-vindo!</h2>
+                <h1 class="Titulo">
+                    Cadastre-se
+                </h1>
+                <div class="linha"></div>
+                <li class="item-campo">
+                    <span>Razão Social:</span>
+                    <input type="text" id="input_razao_social">
+                </li>
+
+                <li class="item-campo">
+                    <span>Nome Fantasia:</span>
+                    <input type="text" id="input_nome_fantasia">
+                </li>
+
+                <li class="item-campo">
+                    <span>CNPJ:</span>
+                    <input type="text" id="input_cnpj">
+                </li>
+
+                <li class="item-campo">
+                    <span>Email de Contato:</span>
+                    <input type="text" id="input_email">
+                    <span id="validar_email" class="span-validacao"></span>
+                </li>
+                
+                <li class="item-campo" id="telefone">
+                    <span> telefone</span>
+                    <input type="text" id="input_telefone">
+                </li>
+
+                <li class="item-campo" id="plano">
+                    <span>Escolha um plano</span>
+                    <select id="Planos">
+                        <option value="">selecionar plano</option>
+                        <option value="1">plano mensal</option>
+                        <option value="2">plano semestral</option>
+                        <option value="3">plano anual</option>
+                    </select>
+                </li>
+                
+                <button class="botao" onclick="cadastrarCliente()">
+                    Cadastrar Endereço
+                </button>
+
+                    <a href="login.html">
+                        <span>Possui uma conta? <u>Faça login!</u></span>
+                    </a>
+                
+
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    var cadastroValidado = false;
+
+    function cadastrarCliente() {
+
+
+        var razaoSocial = input_razao_social.value;
+        var nomeFantasiaVar = input_nome_fantasia.value;
+        var cnpjVar = input_cnpj.value;
+        var emailVar = input_email.value;
+        var telefoneVar = input_telefone.value;
+        var planoVar = Planos.value;
+
+        if (emailVar.indexOf('@') == -1) {
+            alert('E-mail inválido. Por favor, corrija.');
+       
+            return false;
+        }
+
+        if (
+            razaoSocial == "" ||
+            nomeFantasiaVar == "" ||
+            cnpjVar == "" ||
+            telefoneVar == "" ||
+            planoVar == ""
+        ) {
+            alert("Por favor, preencha todos os campos.");
+        
+            return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                 razaoSocialServer: razaoSocial,
+                nomeFantasiaServer: nomeFantasiaVar,
+                cnpjServer: cnpjVar,
+                emailServer: emailVar,
+                telefoneServer: telefoneVar,
+                planoServer: planoVar,
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso! Redirecionando para a tela de cadastro de endereço...");
+                    window.location = "cadastroendereco.html";
+                    limparFormulario();
+              
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+    
+            });
+
+        return false;
+    }
+</script>
