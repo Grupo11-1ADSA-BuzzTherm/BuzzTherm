@@ -100,7 +100,7 @@ body {
 }
 
 .banner {
-    background-image: url(../assets/imgs/OIG.jpg);
+    background-image: url(assets/imgs/OIG.jpg);
     background-size: cover;
 }
 
@@ -300,4 +300,24 @@ footer img {
 .footer.container .version {
     font-size: 12px;
     font-weight: 800;
+}
+
+.radio-wrap {
+    display: flex;
+    gap: 15px;
+    align-self: flex-start;
+}
+
+.radio-wrap span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radio-wrap input {
+    width: 20px !important;
+}
+
+.radio-container {
+    margin-top: 20px;
 }
