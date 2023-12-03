@@ -67,35 +67,8 @@ const serial = async (
         console.log(`A leitura do arduino foi iniciada na porta ${portaArduino.path} utilizando Baud Rate de ${SERIAL_BAUD_RATE}`);
     });
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
-        //console.log(data);
+        
         const valores = data.split(';');
-        // const dht11Umidade1 = parseFloat(valores[0]);
-        // const dht11Temperatura1 = parseFloat(valores[1]);
-        // const dht11Umidade2 = parseFloat(valores[2]);
-        // const dht11Temperatura2 = parseFloat(valores[3]);
-        // const dht11Umidade3 = parseFloat(valores[4]);
-        // const dht11Temperatura3 = parseFloat(valores[5]);
-        // const dht11Umidade4 = parseFloat(valores[6]);
-        // const dht11Temperatura4 = parseFloat(valores[7]);
-        // const dht11Umidade5 = parseFloat(valores[8]);
-        // const dht11Temperatura5 = parseFloat(valores[9]);
-        // // const lm35Temperatura = parseFloat(valores[2]);
-        // // const luminosidade = parseFloat(valores[3]);
-        // // const chave = parseInt(valores[4]);
-
-        // valoresDht11Umidade1.push(dht11Umidade1);
-        // valoresDht11Temperatura1.push(dht11Temperatura1);
-        // valoresDht11Umidade2.push(dht11Umidade2);
-        // valoresDht11Temperatura2.push(dht11Temperatura2);
-        // valoresDht11Umidade3.push(dht11Umidade3);
-        // valoresDht11Temperatura3.push(dht11Temperatura3);
-        // valoresDht11Umidade4.push(dht11Umidade4);
-        // valoresDht11Temperatura4.push(dht11Temperatura4);
-        // valoresDht11Umidade5.push(dht11Umidade5);
-        // valoresDht11Temperatura5.push(dht11Temperatura5);
-        // // valoresLuminosidade.push(luminosidade);
-        // // valoresLm35Temperatura.push(lm35Temperatura);
-        // // valoresChave.push(chave);
 
         if (HABILITAR_OPERACAO_INSERIR) {
             if (AMBIENTE == 'producao') {
@@ -108,8 +81,8 @@ const serial = async (
 
                 // CREDENCIAIS DO BANCO REMOTO - SQL SERVER
                 // Importante! você deve ter criado o usuário abaixo com os comandos presentes no arquivo
-                // "script-criacao-usuario-sqlserver.sql", presente neste diretório.
-                const connStr = "Server=servidor-acquatec.database.windows.net;Database=bd-acquatec;User Id=usuarioParaAPIArduino_datawriter;Password=#Gf_senhaParaAPI;";
+                // "script-criacao-funcionario-sqlserver.sql", presente neste diretório.
+                const connStr = "Server=servidor-acquatec.database.windows.net;Database=bd-acquatec;User Id=funcionarioParaAPIArduino_datawriter;Password=#Gf_senhaParaAPI;";
 
                 function inserirComando(conn, sqlquery) {
                     conn.query(sqlquery);

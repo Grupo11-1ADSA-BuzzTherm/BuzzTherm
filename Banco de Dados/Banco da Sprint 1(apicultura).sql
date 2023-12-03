@@ -15,8 +15,8 @@ qtdColmeia int not null
 
 describe empresa;
 
-create table usuario(
-idUsuario int primary key auto_increment,
+create table funcionario(
+idfuncionario int primary key auto_increment,
 login varchar(255)not null,
 senha varchar(45)not null,
 cargo varchar(45)not null
@@ -58,13 +58,13 @@ insert into empresa values
 
 select * from empresa;
 
-insert into usuario values 
+insert into funcionario values 
 (null, 'marcio.rocha12', '4523', 'Vice-Presidente'),
 (null, 'yasmin.raviero34', '3258', 'Supervisora'),
 (null, 'pedro.salvatore98', '4789', 'Gerente Adminstrativo'),
 (null, 'maria.silva87', '3214', 'Gerente Administrativa');
 
-select * from usuario;
+select * from funcionario;
 
 -- a unidade de medida utilizada foi de centrimetros cubicos ex(50055.60cm3 = 50.5 * 41.3 * 24.4)
 
