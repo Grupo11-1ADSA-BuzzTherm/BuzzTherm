@@ -1,8 +1,8 @@
 var database = require("../database/config");
 
-function buscarcolmeiasPorEmpresa(empresaId) {
+function buscarColmeiasPorEmpresa(idEmpresa) {
 
-  instrucaoSql = `select * from colmeia a join setor on fkSetor = idSetor where fkEmpresa = ${empresaId}`;
+  instrucaoSql = `select * from colmeia a join setor on fkSetor = idSetor where fkEmpresa = ${idEmpresa} `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -18,6 +18,9 @@ function cadastrar(empresaId, descricao) {
 
 
 module.exports = {
-  buscarcolmeiasPorEmpresa,
+  buscarColmeiasPorEmpresa,
+  
   cadastrar
 }
+
+

@@ -1,9 +1,9 @@
 var colmeiaModel = require("../models/colmeiaModel");
 
-function buscarcolmeiasPorEmpresa(req, res) {
-  var idFuncionario = req.params.idFuncionario;
+function buscarColmeiasPorEmpresa(req, res) {
+  var fkEmpresa = req.params.fkEmpresa;
 
-  colmeiaModel.buscarcolmeiasPorEmpresa(idFuncionario).then((resultado) => {
+  colmeiaModel.buscarcolmeiasPorEmpresa(fkEmpresa).then((resultado) => {
     if (resultado.length > 0) {
       res.status(200).json(resultado);
     } else {
@@ -44,6 +44,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  buscarcolmeiasPorEmpresa,
+  buscarColmeiasPorEmpresa,
   cadastrar
 }

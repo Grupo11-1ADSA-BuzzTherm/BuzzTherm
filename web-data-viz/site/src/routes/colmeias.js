@@ -3,7 +3,7 @@ var router = express.Router();
 
 var colmeiaController = require("../controllers/colmeiaController");
 
-router.get("/:empresaId", function (req, res) {
+router.get("/:fkEmpresa", function (req, res) {
   colmeiaController.buscarcolmeiasPorEmpresa(req, res);
 });
 
