@@ -28,7 +28,8 @@ var funcionarioModel = require("../models/funcionarioModel");
                                          email: resultadoAutenticar[0].email,
                                          nome: resultadoAutenticar[0].nome,
                                          senha: resultadoAutenticar[0].senha,
-                                         colmeias: resultadoColmeias 
+                                         colmeias: resultadoColmeias,
+                                         cnpj: resultadoAutenticar[0].cnpj
                                      });
                                  } else {
                                      res.status(204).json({ colmeias: [] });

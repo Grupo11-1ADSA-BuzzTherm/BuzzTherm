@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Funcionário</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sobrenos_style.css">
+    <link rel="stylesheet" href="css/nossosprojetos_style.css">
+    <link rel="stylesheet" href="css/planos_style.css">
+    <link rel="stylesheet" href="css/calculadora.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="logo"><img src="assets/imgs/logo1.png" alt="">
+                <h1>
+                    Buzztherm
+                </h1>
+            </div>
+
+            <ul>
+                <li> <a href="index.html">Home</a></li>
+                <li> <a href="index.html #sobrenos">Sobre nós</a></li>
+                <li> <a href="index.html #planos">Planos</a></li>
+                <li> <a href="index.html #simule">Simule</a></li>
+                <li><a href="index.html #contato">Contato</a></li>
+                <li>|</li>
+                <li><a class="btn-cadastro login" href="login.html"><span>Login</span></a></li>
+                <li><a class="btn-cadastro cadastro" href="cadastro.html"><span>Cadastro</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="corpo-login">
+        <div class="container">
+            <div class="campos">
+                <h1 class="Titulo">
+                    Cadastrar Funcionário
+                </h1>
+                <div class="linha"></div>
+                <li class="item-campo">
+                    <span>Nome:</span>
+                    <input type="text" id="inp_nome">
+                </li>
+
+                <li class="item-campo">
+                    <span>E-mail:</span>
+                    <input type="text" id="inp_email">
+                </li>
+
+                <li class="item-campo">
+                    <span>Senha:</span>
+                    <input type="text" id="inp_senha">
+                </li>
+
+                <li class="item-campo radio-container">
+                    <span>É administrador:</span>
+                    <div class="radio-wrap">
+                        <span>
+                            <label for="sim">Sim</label>
+                            <input type="radio" name="adm" value="1" id="sim">
+                        </span>
+                        <span>
+                            <label for="nao">Não</label>
+                            <input type="radio" name="adm" value="0" id="nao" checked>
+                        </span>
+                    </div>
+                </li>
+
+                <button class="botao" onclick="validarCampos()">
+                    Cadastrar
+                </button>
+
+                </li>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function validarCampos() {
+        var nome = inp_nome.value
+        var email = inp_email.value
+        var senha = inp_senha.value
+        var adm = document.querySelector('input[name="adm"]:checked').value;
+        var cnpj= sessionStorage.CNPJ
+    
+        if (
+            nome == '' ||
+            email == '' ||
+            senha == '' ||
+            senha.length < 8 ||
+            email.indexOf('@') < 0
+        ) {
+            alert('Preencha todos os campos!')
+        } else {
+            cadastrarFunc(nome, email, senha, cnpj, adm);
+        }
+
+        
+        function cadastrarFunc(nome, email, senha, cnpj, adm) {
+        fetch("/funcionarios/cadastrarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                
+            },
+            body: JSON.stringify({
+                nomeServer: nome,
+                emailServer: email,
+                senhaServer: senha,
+                cnpjServer: cnpj,
+                admServer: adm
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Cadastro realizado com sucesso!");
+                  
+                    
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+    
+            });
+    }
+        
+      
+
+    }
+</script>
