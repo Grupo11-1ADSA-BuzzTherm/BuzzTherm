@@ -1,0 +1,49 @@
+#cardColmeias {
+    display: flex;
+    gap: 15px;
+}
+
+#cardColmeias .card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.alerta-verde {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: green;
+}
+
+.alerta-amarelo {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: rgb(236, 208, 46);
+}
+
+.situacao-inoperante {
+    border: none;
+    padding: 0;
+}
+
+.alerta-vermelho {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.cor-alertas {
+    align-self: flex-end;
+    display: flex;
+    gap: 5px;
+}
+
+main {
+    display: block;
+    padding-top: 150px;
+}

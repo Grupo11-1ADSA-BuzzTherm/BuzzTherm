@@ -1,15 +1,14 @@
 var registroModel = require("../models/registroModel");
 
 function buscarUltimosRegistros(req, res) {
-
     const limite_linhas = 7;
-    var resp = JSON.parse(req.params.idcolmeia)
-    var idcolmeia = resp[0].idcolmeia;
+    var resp = JSON.parse(req.params.idColmeia)
+    var idColmeia = resp[0].idColmeia;
     var fkSetor = resp[0].setor;
 
     console.log(`Recuperando as ultimas ${limite_linhas} registros`);
 
-    registroModel.buscarUltimosRegistros(idcolmeia, fkSetor, limite_linhas).then(function (resultado) {
+    registroModel.buscarUltimosRegistros(idColmeia, fkSetor, limite_linhas).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -25,14 +24,17 @@ function buscarUltimosRegistros(req, res) {
 
 function buscarRegistrosEmTempoReal(req, res) {
 
-    var resp = JSON.parse(req.params.idcolmeia)
-    console.log(req.params.idcolmeia, resp[0])
-    var idcolmeia = resp[0].idcolmeia;
+    var resp = JSON.parse(req.params.idColmeia)
+    var a = resp[0].idColmeia
+    console.log(a, '###############################################')
+    console.log(req.params.idColmeia, resp[0])
+    var idColmeia = a;
+    console.log(idColmeia)
     var fkSetor = resp[0].setor;
 
     console.log(`Recuperando registros em tempo real`);
 
-    registroModel.buscarRegistrosEmTempoReal(idcolmeia, fkSetor).then(function (resultado) {
+    registroModel.buscarRegistrosEmTempoReal(a, fkSetor).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

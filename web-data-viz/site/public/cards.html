@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_dashboard.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <script src="js/alerta.js"></script>
+</head>
+
+<body onload="validarSessao(), exibircolmeias(),  atualizacaoPeriodica()">
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/imgs/logo1.png" alt="">
+                <h1>
+                    Buzztherm
+                </h1>
+            </div>
+
+            <ul>
+                <li class="notificacoes"><img src="assets/imgs/icons8-lembrete-de-compromissos-50.png" alt=""></li>
+                <li class="minha-conta"><img src="assets/imgs/licensed-image.jpg" alt=""></li>
+            </ul>
+        </div>
+    </div>
+
+    <main>
+        <div style="display: none;" id="alerta">
+        </div>
+        <div class="cards" id="cardColmeias">
+
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+    function exibircolmeias() {
+        JSON.parse(sessionStorage.COLMEIAS).forEach(item => {
+            document.getElementById("cardColmeias").innerHTML += `
+                    <div class="card">
+                        <h1>${item.descricao}</h1>
+                        <div class="temperatura">
+                            <p id="temp_colmeia_${item.idColmeia}">-°C</p>
+                            <p id="umid_colmeia_${item.idColmeia}">-°C</p>
+                        </div>
+                        <div class="cor-alertas">
+                            <div class="" id="card_temp_${item.idColmeia}"></div>
+                            <div class="" id="card_umid_${item.idColmeia}"></div>
+                        </div>
+                    </div>
+                    `
+        });
+    }
+</script>
