@@ -20,4 +20,11 @@ router.get("/listar", function (req, res) {
   empresaController.listar(req, res);
 });
 
+router.post("/endereco" , function(req,res) {
+  empresaController.cadastrarEndereco(req,res);
+});
+router.post("/setor" , function(req,res ) {
+  empresaController.cadastrarSetor(req,res); 
+
+});
 module.exports = router;

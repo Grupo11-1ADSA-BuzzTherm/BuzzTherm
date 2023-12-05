@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Funcionário</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sobrenos_style.css">
+    <link rel="stylesheet" href="css/nossosprojetos_style.css">
+    <link rel="stylesheet" href="css/planos_style.css">
+    <link rel="stylesheet" href="css/calculadora.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+            <div class="logo"><img src="assets/imgs/logo1.png" alt="">
+                <h1>
+                    Buzztherm
+                </h1>
+            </div>
+
+            <ul>
+                <li> <a href="index.html">Home</a></li>
+                <li> <a href="index.html #sobrenos">Sobre nós</a></li>
+                <li> <a href="index.html #planos">Planos</a></li>
+                <li> <a href="index.html #simule">Simule</a></li>
+                <li><a href="index.html #contato">Contato</a></li>
+                <li>|</li>
+                <li><a class="btn-cadastro login" href="login.html"><span>Login</span></a></li>
+                <li><a class="btn-cadastro cadastro" href="cadastro.html"><span>Cadastro</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="corpo-login">
+        <div class="container">
+            <div class="campos">
+                <h1 class="Titulo">
+                    Cadastrar Terreno
+                </h1>
+                <div class="linha"></div>
+                <li class="item-campo">
+                    <span>Nome da fazenda:</span>
+                    <input type="text" id="inp_nome">
+                </li>
+
+
+                <button class="botao" onclick="validarCampos()">
+                    Cadastrar
+                </button>
+
+                </li>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    function validarCampos() {
+        var cnpjVar= sessionStorage.CNPJ
+        var nomeVar= inp_nome.value 
+        if(nomeVar=='') {
+            alert(`Preencha o nome`)
+        }
+        else {
+            fetch("/empresas/setor", { 
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                cnpjServer:cnpjVar,
+                nomeServer: nomeVar,
+               
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    alert(`Terreno cadastrado com sucesso`);
+                    window.location.reload()
+                    
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+    
+            });
+
+        }
+
+
+
+    }
+</script>

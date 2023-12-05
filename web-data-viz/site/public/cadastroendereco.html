@@ -71,7 +71,7 @@
                 
                 <li class="item-campo">
                     <span>Estado:</span>
-                    <select name="" id="">
+                    <select name="" id="selectEstado">
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
                         <option value="AP">AP</option>
@@ -113,6 +113,48 @@
 </html>
 <script>
     function finalizarCadastro (){
-        location.href = 'login.html'
+        var cnpjVar= sessionStorage.CNPJ
+        var cepVar= cep.value 
+        var logradouroVar= logradouro.value 
+        var numeroVar = numero.value 
+        var bairroVar= bairro.value 
+        var municipioVar= municipio.value
+        var ufVar= selectEstado.value 
+        if(cepVar == '' || logradouroVar == '' || numeroVar =='' || bairroVar== '' || municipioVar=='' || ufVar=='') {
+            alert(`Campos inválidos`)
+        } 
+        else {
+        fetch("/empresas/endereco", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                cnpjServer: cnpjVar,
+                cepServer: cepVar, 
+                logradouroServer: logradouroVar, 
+                numeroServer: numeroVar, 
+                bairroServer: bairroVar,
+                municipioServer: municipioVar,
+                ufServer: ufVar
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    alert(`Cadastro endereço realizado com sucesso!`)
+                    sessionStorage.clear() 
+                    window.location= 'login.html'
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+    
+            });
+
+        return false;
     }
+    }
+    
 </script>
