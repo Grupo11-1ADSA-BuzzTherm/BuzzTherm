@@ -39,10 +39,10 @@ const serial = async (
         poolBancoDados = mysql.createPool(
             {
                 // CREDENCIAIS DO BANCO - MYSQL WORKBENCH
-                host: 'localhost',
+                host: '10.18.36.92',
                 user: 'insertGrupo11',
                 password: 'grupo11',
-                database: 'bdBuzzTherm'
+                database: 'buzztherm'
             }
         ).promise();
     } else if (AMBIENTE == 'producao') {
@@ -102,7 +102,7 @@ const serial = async (
                     var tempAtual = parseFloat(valores[sensorAtual+1])
 
                     await poolBancoDados.execute(
-                        `INSERT INTO registro (fkSensor, umid, temp) VALUES 
+                        `INSERT INTO registro (fkColmeia, umid, temp) VALUES 
                         (${(sensorAtual/2)+1}, ${umiAtual}, ${tempAtual})`
                     );
                 }
@@ -172,4 +172,4 @@ const servidor = (
         valoresLm35Temperatura,
         valoresChave
     );
-})();
+})(); 

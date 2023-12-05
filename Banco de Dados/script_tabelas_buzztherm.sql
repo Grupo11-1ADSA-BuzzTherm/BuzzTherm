@@ -22,6 +22,7 @@ create table endereco_empresa (
     logradouro varchar(80),
     cep char(8),
     numero varchar(5),
+    bairro varchar(45),
     uf char(2),
     municipio varchar(45)
 );
