@@ -33,9 +33,9 @@ create table funcionario (
     email varchar(60) not null,
     senha varchar(60) not null,
     administrador tinyint not null,
-    cnpjEmpresa char(14),
-    constraint fkFuncionarioEmpresa foreign key (cnpjEmpresa)
-        references empresa(cnpj)
+    fkEmpresa int,
+    constraint fkFuncionarioEmpresa foreign key (fkEmpresa)
+        references empresa(idEmpresa)
 );
 
 create table setor (
