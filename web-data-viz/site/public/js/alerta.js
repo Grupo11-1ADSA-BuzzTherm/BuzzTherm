@@ -69,7 +69,7 @@ function alertarTemp(resposta, idColmeia) {
         exibirAlertaTemp(temp, idColmeia, grauDeAviso, grauDeAvisoCor, dtHora, 'Temperatura;ºC', classeAlerta)
     }
 
-    var card;
+    var card, dash;
 
     if (document.getElementById(`temp_colmeia_${idColmeia}`) != null) {
         document.getElementById(`temp_colmeia_${idColmeia}`).innerHTML = temp + "°C";
@@ -78,6 +78,11 @@ function alertarTemp(resposta, idColmeia) {
     if (document.getElementById(`card_temp_${idColmeia}`)) {
         card = document.getElementById(`card_temp_${idColmeia}`)
         card.className = classeAlerta;
+    }
+
+    if (document.getElementById(`chartTemp${idColmeia}`)) {
+        dash = document.getElementById(`chartTemp${idColmeia}`)
+        dash.className = classeAlerta;
     }
 
 }
@@ -126,7 +131,7 @@ function alertarUmid(resposta, idColmeia) {
         exibirAlertaUmid(umid, idColmeia, grauDeAviso, grauDeAvisoCor, dtHora, 'Umidade;%', classeAlerta)
     }
 
-    var card;
+    var card, dash;
 
     if (document.getElementById(`umid_colmeia_${idColmeia}`) != null) {
         document.getElementById(`umid_colmeia_${idColmeia}`).innerHTML = umid + "%";
@@ -135,6 +140,11 @@ function alertarUmid(resposta, idColmeia) {
     if (document.getElementById(`card_umid_${idColmeia}`)) {
         card = document.getElementById(`card_umid_${idColmeia}`)
         card.className = classeAlerta;
+    }
+
+    if (document.getElementById(`chartUmi${idColmeia}`)) {
+        dash = document.getElementById(`chartUmi${idColmeia}`)
+        dash.className = classeAlerta;
     }
 }
 

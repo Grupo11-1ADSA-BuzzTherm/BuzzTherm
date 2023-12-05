@@ -207,3 +207,22 @@ main img {
 .tituloGraficos {
     margin-bottom: 50px;
 }
+
+.graph {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+canvas {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.graph .alerta-amarelo {
+  border: solid yellow 3px;
+}
+
+.graph .alerta-vermelho {
+  border: solid red 3px;
+}

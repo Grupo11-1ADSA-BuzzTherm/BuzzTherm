@@ -3,12 +3,18 @@
     gap: 15px;
 }
 
+.cards {
+    display: flex;
+    justify-content: center;
+}
+
 #cardColmeias .card {
     background-color: white;
     padding: 20px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    width: 200px;
 }
 
 .alerta-verde {

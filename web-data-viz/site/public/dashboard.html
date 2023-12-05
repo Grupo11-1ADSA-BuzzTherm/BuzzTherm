@@ -87,8 +87,8 @@
                         <span id="titulocolmeia${item.idColmeia}">${item.descricao}</span>
                     </h3>
                     <div class="graph">
-                        <canvas id="chartUmi${item.idColmeia}"></canvas>
-                        <canvas id="chartTemp${item.idColmeia}"></canvas>
+                        <canvas class="alerta-dash" id="chartUmi${item.idColmeia}"></canvas>
+                        <canvas class="alerta-dash" id="chartTemp${item.idColmeia}"></canvas>
                     </div>
                     <div class="label-captura">
                         <p id="avisoCaptura${item.idColmeia}" style="color: white"></p>
@@ -243,7 +243,8 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        min: 0,
+                        max: 100
                     }
                 }
             }
