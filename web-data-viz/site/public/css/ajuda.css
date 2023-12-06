@@ -1,0 +1,34 @@
+.ajuda{
+    height: 60%;
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 50px;
+    flex-direction: column;
+}
+body{
+    background-color: #1d1d1d; 
+}
+a{
+ text-decoration: 0;
+ color: black;
+}
+.boxAjuda{
+    padding-top: 25px; 
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.botaoAjuda{
+    background-color: #f1d65d;
+    color: #0000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
