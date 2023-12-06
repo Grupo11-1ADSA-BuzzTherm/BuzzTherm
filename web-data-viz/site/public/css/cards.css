@@ -5,7 +5,10 @@
 
 .cards {
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    margin-left: 300px;
+    flex-wrap: wrap;
+    width: 70%;
 }
 
 #cardColmeias .card {

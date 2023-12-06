@@ -1,0 +1,48 @@
+.sidenav {
+    position: fixed;
+    padding-top: 120px;
+    left: 0;
+    top: 0;
+    background-color: white;
+    height: 100vh;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidenav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 80%;
+    gap: 15px;
+    height: 100%;
+    padding: 0;
+    margin-top: 0;
+}
+
+.sidenav ul li:last-child {
+    position: absolute;
+    bottom: 13%;
+}
+
+.sidenav ul .nav-item {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.sidenav .nav-item {
+}
+
+.sidenav .nav-item i {
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.sidenav .nav-text {
+    width: 50%;
+}

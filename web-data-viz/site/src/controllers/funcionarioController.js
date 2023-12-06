@@ -29,7 +29,8 @@ var funcionarioModel = require("../models/funcionarioModel");
                                          nome: resultadoAutenticar[0].nome,
                                          senha: resultadoAutenticar[0].senha,
                                          colmeias: resultadoColmeias,
-                                         cnpj: resultadoAutenticar[0].cnpj
+                                         cnpj: resultadoAutenticar[0].cnpj,
+                                         adm: resultadoAutenticar[0].administrador
                                      });
                                     } else {
                                         //  res.status(204).json({ colmeias: [] });
@@ -39,7 +40,8 @@ var funcionarioModel = require("../models/funcionarioModel");
                                             nome: resultadoAutenticar[0].nome,
                                             senha: resultadoAutenticar[0].senha,
                                             colmeias: 'sem colmeias',
-                                            cnpj: resultadoAutenticar[0].cnpj
+                                            cnpj: resultadoAutenticar[0].cnpj,
+                                            adm: resultadoAutenticar[0].administrador
                                         });
                                  }
                              })
