@@ -112,8 +112,8 @@
 
     function alterarTitulo(idColmeia) {
         var titulocolmeia = document.getElementById(`titulocolmeia${idColmeia}`)
-        var descricao = JSON.parse(sessionStorage.COLMEIAS).find(item => item.idColmeia == idColmeia).idColmeia;
-        titulocolmeia.innerHTML = "Últimas registros de Temperatura e Umidade da Colmeia #<span style='color: #1d1d1d'>" + descricao + "</span>"
+        var descricao = JSON.parse(sessionStorage.COLMEIAS).find(item => item.idColmeia == idColmeia).descricao;
+        titulocolmeia.innerHTML = "Últimas registros de Temperatura e Umidade da <span style='color: #1d1d1d'>" + descricao + "</span>"
     }
 
     function exibircolmeia(idColmeia) {

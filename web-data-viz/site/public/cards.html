@@ -51,7 +51,7 @@
     function exibircolmeias() {
         JSON.parse(sessionStorage.COLMEIAS).forEach(item => {
             document.getElementById("cardColmeias").innerHTML += `
-                    <div class="card">
+                    <div class="card situacao-${item.situacaoSensor}">
                         <h1>${item.descricao}</h1>
                         <div class="temperatura">
                             <p id="temp_colmeia_${item.idColmeia}">-°C</p>

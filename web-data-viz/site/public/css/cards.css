@@ -35,7 +35,8 @@
 }
 
 .situacao-inoperante {
-    border: none;
+    border: solid red 2px;
+    background-color: rgb(255, 223, 223) !important;
     padding: 0;
 }
 

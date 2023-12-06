@@ -1,5 +1,5 @@
 .ajuda{
-    height: 60%;
+    height: 300px;
     width: 40%;
     display: flex;
     justify-content: space-around;
@@ -7,6 +7,7 @@
     background-color: #ffffff;
     border-radius: 50px;
     flex-direction: column;
+    padding: 25px;
 }
 body{
     background-color: #1d1d1d; 
@@ -16,12 +17,14 @@ a{
  color: black;
 }
 .boxAjuda{
-    padding-top: 25px; 
     width: 100%;
     height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.textoAjuda {
+    font-size: 20px;
 }
 .botaoAjuda{
     background-color: #f1d65d;
@@ -31,4 +34,8 @@ a{
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
+}
+
+footer {
+    margin-top: 30px;
 }

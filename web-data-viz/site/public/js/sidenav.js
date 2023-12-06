@@ -3,7 +3,7 @@ if (sessionStorage.ADM == 1) {
     <div class="sidenav">
                 <ul>
                     <li onclick="pagVisaoGeral()" class="nav-item">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-grip"></i>
                         <span class="nav-text">Visão Geral</span>
                     </li>
                     <li onclick="pagDash()" class="nav-item">

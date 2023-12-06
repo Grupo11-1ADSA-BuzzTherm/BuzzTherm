@@ -198,7 +198,7 @@ function exibirCards() {
 
 function transformarEmDiv({ idColmeia, temp, grauDeAviso, grauDeAvisoCor, dtHora, tipo, classeAlerta}) {
     var tipos = tipo.split(';');
-    var descricao = JSON.parse(sessionStorage.COLMEIAS).find(item => item.idColmeia == idColmeia).idColmeia;
+    var descricao = JSON.parse(sessionStorage.COLMEIAS).find(item => item.idColmeia == idColmeia).descricao;
     return `
         <li id="card_${idColmeia}_${tipos[0]}">
             <div class="li-flex ${classeAlerta}">
@@ -206,7 +206,7 @@ function transformarEmDiv({ idColmeia, temp, grauDeAviso, grauDeAvisoCor, dtHora
                     <div class="texto-icone-alerta">
                         <img src="assets/imgs/alerta-${grauDeAvisoCor}.png" alt="">
                         <span class="texto-alerta">
-                            <h5>Colmeia #${descricao} está em estado de ${grauDeAviso}!</h5>
+                            <h5>${descricao} está em estado de ${grauDeAviso}!</h5>
                             <small>${tipos[0]} ${temp}${tipos[1]}</small>
                         </span>
                     </div>
