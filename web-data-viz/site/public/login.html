@@ -120,11 +120,13 @@
                     setTimeout(function () {
                         loading_gif.style.display = 'none'
                         // alert(`Login com sucesso!`)
-                        if(sessionStorage.COLMEIAS != '"sem colmeias"')
+                        if(sessionStorage.COLMEIAS != '"sem colmeias"') {
                             window.location = "./cards.html";
-                        else
+                        } else {
                             alert('Nenhuma colmeia detectada! Entre em contato conosco para adicionar sua primeira colmeia.')
-                       
+                            sessionStorage.clear()
+                            window.location = "./ajuda.html"
+                        }
                     }, 1000);
 
                 });

@@ -4,13 +4,14 @@ insert into buzztherm.endereco_empresa values ((select idEmpresa from empresa wh
 
 insert into buzztherm.setor values (null, 'Fazenda MelDourado', (select idEmpresa from empresa where cnpj = '12345678000190'));
 
-insert into buzztherm.funcionario values (null, 'MelDourado', 'meldourado@gmail.com', '123#Asd', 1, (select idEmpresa from empresa where cnpj = '12345678000190'));
+insert into buzztherm.funcionario values (null, 'MelDourado', 'meldourado@gmail.com', '123123#Asd', 1, (select idEmpresa from empresa where cnpj = '12345678000190'));
 
-insert into buzztherm.colmeia values (1, 'Colmeia A', 10, 'langstroth', 1, 1);
-insert into buzztherm.colmeia values (2, 'Colmeia B', 10, 'langstroth', 1, 1);
-insert into buzztherm.colmeia values (3, 'Colmeia C', 10, 'langstroth', 1, 1);
-insert into buzztherm.colmeia values (4, 'Colmeia D', 10, 'langstroth', 1, 1);
-insert into buzztherm.colmeia values (5, 'Colmeia E', 10, 'langstroth', 1, 1);
+insert into buzztherm.colmeia values (1, 'Colmeia A', 10, 'langstroth', 'normal', 1);
+insert into buzztherm.colmeia values (2, 'Colmeia B', 10, 'langstroth', 'normal', 1);
+insert into buzztherm.colmeia values (3, 'Colmeia C', 10, 'langstroth', 'normal', 1);
+insert into buzztherm.colmeia values (4, 'Colmeia D', 10, 'langstroth', 'normal', 1);
+insert into buzztherm.colmeia values (5, 'Colmeia E', 10, 'langstroth', 'normal', 1);
+insert into buzztherm.colmeia values (6, 'Colmeia F', 10, 'langstroth', 'inoperante', 1);
 
 insert into buzztherm.registro (temp, umid, fkcolmeia) values
     (33.0, 55.0, 1),

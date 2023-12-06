@@ -51,7 +51,7 @@ create table colmeia (
     descricao varchar(90),
     qtdQuadros int,
     tipo varchar(45),
-    situacaoSensor tinyint,
+    situacaoSensor varchar(20),
     fkSetor int,
     constraint fkColmeiaSetor foreign key (fkSetor)
         references setor(idSetor)

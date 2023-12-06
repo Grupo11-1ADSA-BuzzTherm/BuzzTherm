@@ -151,7 +151,12 @@ main {
   border-radius: 10px;
   padding: 5px;
 }
-.situacao-normal {
+
+.situacao-inoperante .dot {
+  color: red !important;
+}
+
+.situacao-normal .dot {
   color: green;
   font-size: 20px;
 }
@@ -225,4 +230,8 @@ canvas {
 
 .graph .alerta-vermelho {
   border: solid red 3px;
+}
+
+.situacao0 {
+  
 }

@@ -70,12 +70,12 @@
         colmeias.forEach(item => {
             document.getElementById("btncolmeia").innerHTML += `
             <li class="btn-chart" onclick="exibircolmeia(${item.idColmeia})" id="btncolmeia${item.idColmeia}">
-                <div class="li-flex lista-colmeia">
+                <div class="li-flex lista-colmeia situacao-${item.situacaoSensor}">
                     <div class="msg-alerta">
                         <img src="assets/imgs/colmeia-icone.png" alt="">
                         <span class="texto-alerta">
-                            <h3>Colmeia #${item.idColmeia}</h3>
-                            <p><b class="situacao-normal">&bull;</b> Situação: Normal</p>
+                            <h3>${item.descricao}</h3>
+                            <p><b class="situacao-normal"><span class="dot">&bull;</span></b> Situação: ${item.situacaoSensor}</p>
                         </span>
                     </div>
                 </div>
