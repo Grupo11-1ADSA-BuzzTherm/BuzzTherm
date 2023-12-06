@@ -39,7 +39,7 @@ const serial = async (
         poolBancoDados = mysql.createPool(
             {
                 // CREDENCIAIS DO BANCO - MYSQL WORKBENCH
-                host: '10.18.36.92',
+                host: '10.18.36.91',
                 user: 'insertGrupo11',
                 password: 'grupo11',
                 database: 'buzztherm'

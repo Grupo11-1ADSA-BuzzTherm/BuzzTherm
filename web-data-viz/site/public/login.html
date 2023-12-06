@@ -8,7 +8,6 @@
     <link rel="icon" href="assets/imgs/logo-tab.png"> 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sobrenos_style.css">
-    <link rel="stylesheet" href="css/nossosprojetos_style.css">
     <link rel="stylesheet" href="css/planos_style.css">
     <link rel="stylesheet" href="css/calculadora.css">
     <link rel="stylesheet" href="css/login.css">
@@ -73,6 +72,8 @@
             </div>
         </div>
     </div>
+
+    <img id="loading_gif" src="assets/imgs/loading.gif" alt="">
 </body>
 </html>
 
@@ -114,12 +115,17 @@
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.COLMEIAS = JSON.stringify(json.colmeias)
                     sessionStorage.CNPJ = json.cnpj 
-
+                    loading_gif.style.display = 'block'
+                    
                     setTimeout(function () {
-                        alert(`Login com sucesso!`)
-                        window.location = "./dashboard.html";
+                        loading_gif.style.display = 'none'
+                        // alert(`Login com sucesso!`)
+                        if(sessionStorage.COLMEIAS != '"sem colmeias"')
+                            window.location = "./cards.html";
+                        else
+                            alert('Nenhuma colmeia detectada! Entre em contato conosco para adicionar sua primeira colmeia.')
                        
-                    }, 1000); // apenas para exibir o loading
+                    }, 1000);
 
                 });
               

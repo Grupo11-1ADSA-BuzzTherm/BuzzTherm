@@ -8,7 +8,6 @@
     <link rel="icon" href="assets/imgs/logo-tab.png"> 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sobrenos_style.css">
-    <link rel="stylesheet" href="css/nossosprojetos_style.css">
     <link rel="stylesheet" href="css/planos_style.css">
     <link rel="stylesheet" href="css/calculadora.css">
     <link rel="stylesheet" href="css/login.css">
@@ -57,7 +56,8 @@
 
                 <li class="item-campo">
                     <span>CNPJ:</span>
-                    <input type="text" id="input_cnpj">
+                    <input onkeyup="validarCNPJ()" type="text" id="input_cnpj">
+                    <span id="validar_cnpj" class="span-validacao"></span>
                 </li>
 
                 <li class="item-campo">
@@ -131,13 +131,16 @@
             return false;
         }
 
+        if (!validarCNPJ() || !validarSenha()) {
+            return false;
+        }
+
         if (
             razaoSocial == "" ||
             nomeFantasiaVar == "" ||
             cnpjVar == "" ||
             telefoneVar == "" ||
-            planoVar == "" ||
-            cadastroValidado
+            planoVar == ""
         ) {
             alert("Por favor, preencha todos os campos.");
         
@@ -161,7 +164,6 @@
         })
             .then(function (resposta) {
                 if (resposta.ok) {
-                    alert("Cadastro realizado com sucesso! Redirecionando para a tela de cadastro de endereço...");
                     cadastrarFunc(razaoSocial, emailVar, senhaVar, cnpjVar).then(
                         window.location = "cadastroendereco.html"
                     )
@@ -206,6 +208,18 @@
             });
     }
 
+    function validarCNPJ() {
+        tamanho = input_cnpj.value.length
+        
+        if (tamanho != 14) {
+            validar_cnpj.innerHTML = 'CNPJ deve ter 14 caracteres';
+        } else {
+            validar_cnpj.innerHTML = '';
+        }
+
+        return tamanho == 14;
+    }
+
     function validarSenha() {
         var senha = input_senha.value
         var tamanhoSenha = senha.length;
@@ -239,10 +253,10 @@
 
             if (senha == confirmarSenha) {
                 confirmar_senha.innerHTML = 'Senhas são iguais!';
-                cadastroValidado = true;
+                return true;
             } else {
                 confirmar_senha.innerHTML = 'Senhas não são iguais!';
-                cadastroValidado = false;
+                return false;
             }
             
         } else {
@@ -253,7 +267,7 @@
                 &bull; pelo menos uma letra maiúscula e minúscula<br>
                 &bull; menos um número e um caracter especial<br><br>
             `;
-            cadastroValidado = false;
+            return false;
         }
 
     }
